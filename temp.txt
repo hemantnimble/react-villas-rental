@@ -1,0 +1,158 @@
+<NavBar></NavBar>
+            <div className='for-footer-l' style={{ background: "white" }}>
+                <div className='body-main'>
+                    <DescTop></DescTop>
+                    <div className="villas-information-main-container">
+                        <div className="left-side-box">
+                            <div>
+                                <div className="villa-name">
+                                    <p>Mountain Mist</p>
+                                </div>
+                                <div className="location-name">
+                                    <p>Dudhiware, Pawna-Lonavala Road</p>
+                                </div>
+                                <div className="timing">
+                                    <div className="timing-icons"><i className="fa-solid fa-clock" />
+                                        <p> Check IN Time : 1 PM.</p>
+                                    </div>
+                                    <div className="timing-icons"><i className="fa-solid fa-clock" />
+                                        <p>Check OUT Time : 11 AM.</p>
+                                    </div>
+                                    <div className="extend-time">
+                                        <p>
+                                            (Extend Given Time Will Charge Extra)
+                                        </p>
+                                    </div>
+                                </div>
+                                {/* mid line */}
+                                <div className="mid-line">
+                                    <ol>
+                                        <li>Entire Villa</li>
+                                        <li>4 Beds</li>
+                                        <li>1 Hall</li>
+                                        <li>5 Baths</li>
+                                        <li>Pvt Pool</li>
+                                    </ol>
+                                </div>
+                            </div>
+
+
+                            <div className="info-icons">
+                                <div className="icons-main">
+                                    <div className="info-icons-sec"><i className="fa-solid fa-users" id="first-icon"></i>
+                                        <p>12-18 Guests</p>
+                                    </div>
+                                    <div className="info-icons-sec"> <i className="fa-sharp fa-solid fa-house" id="second-icon"></i>
+                                        <p>4 BHK</p>
+                                    </div>
+                                    <div className="info-icons-sec"><i className="fa-sharp fa-solid fa-person-swimming"
+                                        id="third-icon"></i>
+                                        <p>Private Pool</p>
+                                    </div>
+                                    <div className="info-icons-sec"> <i className="fa-solid fa-wifi" id="forth-icon"></i>
+                                        <p> Wifi</p>
+                                    </div>
+                                </div>
+                            </div>
+                            {/* .......................second nav bar.................  */}
+                            <div className="sec-header">
+                                <nav className="sec-nav">
+                                    <ol>
+                                        <li><a href="#about">About</a>
+                                        </li><li>
+                                        </li><li><a href="#aminities">Aminities</a>
+                                        </li><li>
+                                        </li><li><a href="#meals">Meals</a>
+                                        </li><li>
+                                        </li><li><a href="#location">Location</a>
+                                        </li><li>
+                                        </li><li><a href="#homerules">Homes Rules</a>
+                                        </li><li>
+                                        </li><li><a href="#policy">Policy</a>
+                                        </li><li>
+                                        </li></ol>
+                                </nav>
+                            </div>
+
+                            <div>
+                               
+                                {/* .................................food menu section......................  */}
+                                
+                                {/* ...................................HOME RULES SECTION.....................  */}
+                                <div className="home-rules-main" id="homerules">
+                                    <div className="home-rules-heading">
+                                        <p>HOME RULES</p>
+                                    </div>
+                                    <div className="rules-container">
+                                        <div className="rules">
+                                            <ol>
+                                                <li>This is not a pet-friendly property (extra security deposit will be
+                                                    taken
+                                                    for pets).</li>
+                                                <li>The caretaker stays on the premises of the same property.</li>
+                                                <li>Children should be supervised while they are in or around the pool.</li>
+                                                <li>Smoking and alcohol consuption is allowed in the villa.</li>
+                                                <li>Please do not carry food/drinks in
+                                                    and
+                                                    around
+                                                    the
+                                                    pool.</li>
+                                                <li>Please be mindful and keep noise to a minimum after 10 PM.</li>
+                                                <span className="read-more-text">
+                                                    <li>All mobile networks work fairly well here.</li>
+                                                    <li>Guests are earnestly requested to treat the home with care.</li>
+                                                    <li>We urge you to wear swimming attire in the pool and kindly shower
+                                                        before
+                                                        entering.
+                                                    </li>
+                                                    <li>Footwears not allowed inside villa</li>
+                                                </span>
+                                            </ol>
+                                            <span className="read-more-btn">Read More</span>
+                                        </div>
+                                        {/* ................................policy............  */}
+                                        <div className="home-rules-heading" id="policy">
+                                            <p>POLICY</p>
+                                        </div>
+                                        <div className="rules">
+                                            <ol>
+                                                <li>The advance payment must be made for your booking to be confirmed.</li>
+                                                <li>The number of guests must not exceed the count mentioned at the time of
+                                                    booking or will be charge extra.</li>
+                                                <li>Only the guests who have been accounted for are allowed at the villa.
+                                                </li>
+                                                <li>All guests must be able to share valid ID proofs when asked upon
+                                                    arrival.
+                                                </li>
+                                                <li>Any damage to the property caused by the guest will be charged as per
+                                                    the
+                                                    actual cost of repair or replacement.</li>
+                                                <span className="read-more-text">
+                                                    <li>Any illegal activity - including but not limited to prostitution and
+                                                        the
+                                                        use
+                                                        of narcotics - is strictly not permitted.</li>
+                                                    <li>This security deposit amount is refunded at check-out time.</li>
+                                                    <li>A refundable deposit may be collected before check-in.</li>
+                                                </span>
+                                            </ol>
+                                            <span className="read-more-btn">Read More</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                
+                                <p className="big-text" />
+                                <p className="small-text" />
+                                {/* .............................right side box..................  */}
+
+                                
+                            </div>
+                        </div>
+                        <div className="right-side-box">
+                            <PriceBox></PriceBox>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <Footer></Footer>
