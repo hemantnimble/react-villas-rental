@@ -1,0 +1,60 @@
+
+{
+    "villas": [
+        {
+            "id": "Heramb2Bhk",
+            "name": "Heramb Villa",
+            "thumbnail": "Images/thumbnails/heramb.jpg",
+            "mainImg2": "Images/villas/Heramb villa/IMG-20220708-WA0061.jpg",
+            "mainImg3": "Images/villas/Heramb villa/IMG-20220708-WA0072.jpg",
+            "driveLink": "https://drive.google.com/drive/folders/1m_9cFYWk6LbTmgYB9QJWBJSUkvNvTkS1",
+            "bestbadge": "Images/Icons/best_rated_tag.svg",
+            "about": "Heramb is a luxurious private villa to relax and rendezvous with lush green surroundings in Pawna/Lonavala. It is a 4BHK luxurious villa with a lawn, swimming pool & many more amenities.",
+            "del_price": "17,000",
+            "price": "14,000",
+            "weekday_price": "8,000",
+            "bhk": "2 Bedrooms",
+            "baths": "2 Baths",
+            "hall": "1 Hall",
+            "looking": "18",
+            "location": "https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d3778.1008679000097!2d73.47344!3d18.749031000000002!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zMTjCsDQ0JzU2LjUiTiA3M8KwMjgnMjQuNCJF!5e0!3m2!1sen!2sin!4v1677838168553!5m2!1sen!2sin",
+            "capacity": "10+5 Guests",
+            "price_capacity": "10",
+            "description": "Heramb is a 2 BHK villa with Private Pool. Best suited for a small group. Also has a bathtub to relax and enjoy.",
+            "images": [
+                "Images/villas/Heramb villa/IMG-20220708-WA0070.jpg",
+                "Images/villas/Heramb villa/IMG-20220708-WA0071.jpg",
+                "Images/villas/Heramb villa/IMG-20220708-WA0072.jpg",
+                "Images/villas/Heramb villa/IMG-20220708-WA0060.jpg"
+            ]
+        },
+        {
+            "id": "Jannat3Bhk",
+            "name": "Jannat Villa",
+            "thumbnail": "Images/thumbnails/jannat.jpg",
+            "mainImg2": "Images/villas/jannat/1 (1).jpg",
+            "mainImg3": "Images/villas/jannat/1 (2).jpg",
+            "luxuryBadge": "Images/Icons/luxury-badge-updated.svg",
+            "driveLink": "https://drive.google.com/drive/folders/1m_9cFYWk6LbTmgYB9QJWBJSUkvNvTkS1",
+            "del_price": "25,000",
+            "price": "22,000",
+            "weekday_price": "12,000",
+            "bhk": "3 Bedrooms",
+            "baths": "3 Baths",
+            "hall": "1 Hall",
+            "looking": "30",
+            "location": "https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d3778.1008679000097!2d73.47344!3d18.749031000000002!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zMTjCsDQ0JzU2LjUiTiA3M8KwMjgnMjQuNCJF!5e0!3m2!1sen!2sin!4v1677838168553!5m2!1sen!2sin",
+            "capacity": "12+6 Guests",
+            "price_capacity": "12",
+            "description": "Jannat is a 3 BHK villa with a Private Pool. Best suited for a small group. Also has a bathtub to relax and enjoy.",
+            "images": [
+                "Images/villas/jannat/1 (1).jpg",
+                "Images/villas/jannat/1 (2).jpg",
+                "Images/villas/jannat/1 (3).jpg",
+                "Images/villas/jannat/1 (4).jpg"
+            ]
+        }
+    ]
+}
+ 
+  

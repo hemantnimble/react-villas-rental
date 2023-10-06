@@ -7,9 +7,9 @@ import Footer from '../components/Footer'
 import FoodMenu from '../components/CompDescPAge/FoodMenu'
 import RulesPolicies from '../components/RulesPolicies'
 import NearByPlaces from '../components/CompDescPAge/NearByPalces'
-import villaData from '../../data'
 import { useParams } from 'react-router-dom'
 import { useEffect } from 'react'
+import { useSelector } from 'react-redux'
 
 function DescriptionPage() {
 
@@ -17,6 +17,8 @@ function DescriptionPage() {
         window.scrollTo(0, 0)
     }
     ), []
+
+    const villaData = useSelector(state => state.villaInfo.villaInfo)
 
     const { villaId } = useParams();
     const villa = villaData.find((villa) => villa.id === villaId);

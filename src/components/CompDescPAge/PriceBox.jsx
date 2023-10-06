@@ -1,27 +1,30 @@
 import React from 'react'
 import { useParams } from 'react-router-dom'
-import villaData from '../../../data';
+import { useSelector } from 'react-redux'
+
 
 function PriceBox() {
+    const villaData = useSelector(state => state.villaInfo.villaInfo)
 
     const { villaId } = useParams();
     const villa = villaData.find((villa) => villa.id === villaId)
-    const { price, price_capacity, weekday_price, del_price ,looking} = villa
-
+    const { price, price_capacity, weekday_price, del_price, looking } = villa
+   
     return (
+
         <div className="main-left">
             <div className="heading-one">
                 <p className="del-price">{del_price}</p>
-                <p className="main-price">{price}<span className="after-price">per-night
+                <p className="main-price">{price}<span className="after-price">/per-night
                     (Week-END/Holiday)</span>
                 </p>
-                <p className="main-price-wkday">{weekday_price}<span className="after-price">per-night
+                <p className="main-price-wkday">{weekday_price}<span className="after-price">/-per-night
                     (Week-DAY)</span>
                 </p>
                 <p className="above-price-main">Price given above is for upto <span className="above-guests"> {price_capacity} Guests</span></p>
                 <p>Above {price_capacity} Guests : </p>
                 <div className="extra-guests-charge">
-                    <p className="extra-guest-prc"> ₹1,000 <span className="after-price">per-person(weekend/holiday)</span> </p>
+                    <p className="extra-guest-prc">₹1,000 <span className="after-price">per-person(weekend/holiday)</span> </p>
                     <p className="extra-guest-prc">₹500 <span className="after-price">per-person(weekdays)</span>
                     </p>
                 </div>

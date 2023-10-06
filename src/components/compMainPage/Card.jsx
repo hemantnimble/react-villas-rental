@@ -1,11 +1,35 @@
 import React from 'react'
-import villaData from '../../../data'
 import { Link } from 'react-router-dom'
+import { fetchAsync } from '../../features/villaInfo/villaInfoSlice'
+import { useDispatch, useSelector } from 'react-redux'
+import { useEffect, useState } from 'react'
 
 
 function Card() {
+  const dispatch = useDispatch();
+
+
+  // useEffect(() => {
+  //   dispatch(fetchAsync());
+  //   console.log('Card component re-rendered');    
+  // }, [dispatch]);
+
+  useEffect(() => {
+    // Check if data is already loaded in the Redux state
+    // const villaData = useSelector(state => state.villaInfo.villaInfo);
+
+    if (!villaData.length) {
+      // Fetch data only if it's not already in the Redux state
+      dispatch(fetchAsync());
+    }
+  }, [dispatch]);
+
+  const villaData = useSelector(state => state.villaInfo.villaInfo)
+
+  // console.log(villaData)
   return (
     <>
+      {/* <button onClick={()=> dispatch(fetchAsync())}>fffffffffff</button> */}
       {
         villaData.map((data) => {
           return <Link key={data.id} to={`/${data.id}`}>
@@ -40,9 +64,11 @@ function Card() {
               </div>
             </div>
           </Link>
+
         })
 
       }
+      <Link to="/admin">Admin PAge</Link>
     </>
   )
 }

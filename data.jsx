@@ -8,7 +8,7 @@ let villaData = [
         driveLink:'https://drive.google.com/drive/folders/1m_9cFYWk6LbTmgYB9QJWBJSUkvNvTkS1',
         bestbadge: 'Images/Icons/best_rated_tag.svg',
         // luxuryBadge: 'Images/Icons/luxury-badge-updated.svg',
-        about:'Mountain Mist is a luxurious private villa to relax and rendezvous with lush green surroundings in Pawna/Lonavala. It is a 4BHK luxurious villa with a lawn, swimming pool & many more amenities.',
+        about:'Heramb Mist is a luxurious private villa to relax and rendezvous with lush green surroundings in Pawna/Lonavala. It is a 4BHK luxurious villa with a lawn, swimming pool & many more amenities.',
         del_price: '17,000',
         price: '14,000',
         weekday_price: '8,000',
