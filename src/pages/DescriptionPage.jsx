@@ -58,7 +58,7 @@ function DescriptionPage() {
                                     <li>Entire Villa</li>
                                     <li>{bhk}</li>
                                     <li>{hall}</li>
-                                    <li>{baths}</li>
+                                    <li>{baths} Baths</li>
                                     <li>Pvt Pool</li>
                                 </ol>
                             </div>

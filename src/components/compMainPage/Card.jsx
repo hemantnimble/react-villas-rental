@@ -5,21 +5,13 @@ import { useDispatch, useSelector } from 'react-redux'
 import { useEffect, useState } from 'react'
 
 
+
 function Card() {
   const dispatch = useDispatch();
 
 
-  // useEffect(() => {
-  //   dispatch(fetchAsync());
-  //   console.log('Card component re-rendered');    
-  // }, [dispatch]);
-
   useEffect(() => {
-    // Check if data is already loaded in the Redux state
-    // const villaData = useSelector(state => state.villaInfo.villaInfo);
-
     if (!villaData.length) {
-      // Fetch data only if it's not already in the Redux state
       dispatch(fetchAsync());
     }
   }, [dispatch]);
@@ -29,10 +21,9 @@ function Card() {
   // console.log(villaData)
   return (
     <>
-      {/* <button onClick={()=> dispatch(fetchAsync())}>fffffffffff</button> */}
       {
         villaData.map((data) => {
-          return <Link key={data.id} to={`/${data.id}`}>
+          return <Link key={data.name} to={`/${data.id}`}>
             <div className="card">
               <div className="card-image">
                 <div className="best-rated">
@@ -64,11 +55,8 @@ function Card() {
               </div>
             </div>
           </Link>
-
         })
-
       }
-      <Link to="/admin">Admin PAge</Link>
     </>
   )
 }

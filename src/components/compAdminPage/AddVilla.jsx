@@ -13,7 +13,7 @@ function AddVilla() {
         thumbnail: 'Images/thumbnails/heramb.jpg',
         mainImg2: 'Images/villas/Heramb villa/IMG-20220708-WA0061.jpg',
         mainImg3: 'Images/villas/Heramb villa/IMG-20220708-WA0072.jpg',
-        driveLink: 'https://drive.google.com/drive/folders/1m_9cFYWk6LbTmgYB9QJWBJSUkvNvTkS1',
+        driveLink: '',
         bestbadge: 'Images/Icons/best_rated_tag.svg',
         about: 'Mountain Mist is a luxurious private villa to relax and rendezvous with lush green surroundings in Pawna/Lonavala. It is a 4BHK luxurious villa with a lawn, swimming pool & many more amenities.',
         del_price: '17,000',
@@ -45,19 +45,30 @@ function AddVilla() {
     }
     function handleSubmit(e) {
         e.preventDefault();
-        dispatch(addNewVilla(input))
-        setinput('')
+        if (input === '') {
+            alert("Enter Information")
+        }
+        else {
+            dispatch(addNewVilla(input));
+            setinput('');
+        }
     }
 
     return (
         <div className="add-villa-container">
             <h1>Add Villa</h1>
             <form className="add-villa-form" onSubmit={handleSubmit}>
-                <input onChange={handleChange} value={villaData.name} type="text" placeholder="Villa Name" name="name" />
+                <input onChange={handleChange} type="text" placeholder="Villa Name" name="name" />
                 <input onChange={handleChange} type="text" placeholder="Bhk?" name="bhk" />
                 <input onChange={handleChange} type="text" placeholder="Capacity" name="capacity" />
                 <input onChange={handleChange} type="text" placeholder="ID" name="id" />
                 <input onChange={handleChange} type="text" placeholder="Price" name="price" />
+                <input onChange={handleChange} type="text" placeholder="Drive Link" name="driveLink" />
+                {/* <input
+                    type="file"
+                    accept="image/*"
+                    multiple
+                /> */}
                 <button type="submit">Add Villa</button>
             </form>
         </div>

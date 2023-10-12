@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { updateVilla } from '../../features/villaInfo/villaInfoSlice'
 import { Link, useParams } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 function EditVilla() {
 
@@ -10,6 +11,8 @@ function EditVilla() {
     const dispatch = useDispatch();
     const [updatedVilla, setUpdatedVilla] = useState({});
     const villaData = useSelector(state => state.villaInfo.villaInfo);
+
+    const navigate = useNavigate();
 
 
     useEffect(() => {
@@ -28,8 +31,9 @@ function EditVilla() {
     }
     function handleUpdate(e) {
         e.preventDefault();
-        dispatch(updateVilla(updatedVilla))
-        // setinput('')
+        dispatch(updateVilla(updatedVilla));
+        navigate('/');
+        setUpdatedVilla('');
     }
 
     return (
@@ -44,7 +48,10 @@ function EditVilla() {
                 <button type="submit">Edit Villa</button>
             </form>
             <Link to="/admin">
-                <button style={{marginTop:"20px"}}>Admin Page</button>
+                <button style={{ marginTop: "20px" }}>Admin Page</button>
+            </Link>
+            <Link to="/">
+                <button style={{ marginTop: "20px" }}>Home Page</button>
             </Link>
         </div>
 

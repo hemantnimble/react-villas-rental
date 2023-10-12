@@ -10,7 +10,7 @@ export const fetchAsync = createAsyncThunk(
   'villaInfo/fetchVillaInfo',
   async () => {
     const response = await fetchVillaInfo();
-    return response.data;
+    return response;
   }
 );
 
