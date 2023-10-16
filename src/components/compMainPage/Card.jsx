@@ -10,20 +10,20 @@ function Card() {
   const dispatch = useDispatch();
 
 
+  const villaData = useSelector(state => state.villaInfo.villaInfo)
   useEffect(() => {
     if (!villaData.length) {
       dispatch(fetchAsync());
     }
-  }, [dispatch]);
+  }, [villaData]);
 
-  const villaData = useSelector(state => state.villaInfo.villaInfo)
 
   // console.log(villaData)
   return (
     <>
       {
         villaData.map((data) => {
-          return <Link key={data.name} to={`/${data.id}`}>
+          return <Link key={data._id} to={`/${data._id}`}>
             <div className="card">
               <div className="card-image">
                 <div className="best-rated">

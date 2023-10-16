@@ -7,7 +7,7 @@ function PriceBox() {
     const villaData = useSelector(state => state.villaInfo.villaInfo)
 
     const { villaId } = useParams();
-    const villa = villaData.find((villa) => villa.id === villaId)
+    const villa = villaData.find((villa) => villa._id === villaId)
     const { price, price_capacity, weekday_price, del_price, looking } = villa
    
     return (

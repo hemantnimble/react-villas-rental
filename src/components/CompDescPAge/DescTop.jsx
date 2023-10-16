@@ -9,7 +9,7 @@ function DescTop() {
     const villaData = useSelector(state => state.villaInfo.villaInfo)
    
     const { villaId } = useParams();
-    const villa = villaData.find((villa) => villa.id === villaId);
+    const villa = villaData.find((villa) => villa._id === villaId);
     const { images, thumbnail, mainImg2, mainImg3, driveLink, luxuryBadge } = villa
 
     const [modal, setModal] = useState(false);

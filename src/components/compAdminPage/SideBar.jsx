@@ -4,11 +4,13 @@ import { useDispatch, useSelector } from 'react-redux'
 import { useEffect, useState } from 'react'
 import '../../css/adminPage.css'
 import { deleteVilla } from '../../features/villaInfo/villaInfoSlice'
-import { Link } from 'react-router-dom'
+import { Link, useParams } from 'react-router-dom'
 
 function SideBar() {
     const dispatch = useDispatch();
     const villaData = useSelector(state => state.villaInfo.villaInfo);
+
+    const { id } = useParams()
 
 
     useEffect(() => {
@@ -21,26 +23,26 @@ function SideBar() {
 
 
     function handleDelete(id) {
-        dispatch(deleteVilla(id))
+        dispatch(deleteVilla(id));
     }
 
     function handleEdit(id) {
-        setEdit(villaData.find(data => data.id === id));
+        setEdit(villaData.find(data => data._id === id));
     }
 
     return (
-        <div className="sidebar">
+        <aside className="sidebar">
             <h1>SideBar</h1>
             <p>Existing Villa Count: {villaData.length}</p>
-            {villaData.map((data, id) => (
-                <div key={id} className="villa-item">
+            {villaData.map((data, _id) => (
+                <div key={data._id} className="villa-item">
                     <h3>{data.name}</h3>
-                    <Link to={`/edit/${data.id}`}>
-                    <button style={{ marginRight: "25px" }} onClick={() => handleEdit(data.id)} >Edit Villa</button></Link>
-                    <button onClick={() => handleDelete(data.id)}>Delete Villa</button>
+                    <Link to={`/edit/${data._id}`}>
+                        <button style={{ marginRight: "25px" }} onClick={() => handleEdit(data._id)} >Edit Villa</button></Link>
+                    <button onClick={() => handleDelete(data._id)}>Delete Villa</button>
                 </div>
             ))}
-        </div>
+        </aside>
     )
 }
 

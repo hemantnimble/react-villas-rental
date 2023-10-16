@@ -9,20 +9,25 @@ import RulesPolicies from '../components/RulesPolicies'
 import NearByPlaces from '../components/CompDescPAge/NearByPalces'
 import { useParams } from 'react-router-dom'
 import { useEffect } from 'react'
-import { useSelector } from 'react-redux'
+import { useSelector, useDispatch } from 'react-redux'
 
 function DescriptionPage() {
+    const dispatch = useDispatch();
 
     useEffect(() => {
         window.scrollTo(0, 0)
+        if (!villaData.length) {
+            dispatch(fetchAsync());
+        }
     }
-    ), []
+    ), [dispatch]
 
     const villaData = useSelector(state => state.villaInfo.villaInfo)
 
     const { villaId } = useParams();
-    const villa = villaData.find((villa) => villa.id === villaId);
+    const villa = villaData.find((villa) => villa._id === villaId);
     const { name, bhk, baths, hall, capacity, about, location } = villa
+
 
     return (
         <>

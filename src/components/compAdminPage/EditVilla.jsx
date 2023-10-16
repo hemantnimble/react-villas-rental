@@ -17,10 +17,11 @@ function EditVilla() {
 
     useEffect(() => {
         if (villaId) {
-            const singleVilla = villaData.find((data) => data.id === villaId);
+            const singleVilla = villaData.find((data) => data._id === villaId);
             setUpdatedVilla(singleVilla);
+            console.log(singleVilla)
         }
-    }, []);
+    }, [villaId, villaData]);
 
 
     function handleChange(e) {
@@ -29,12 +30,14 @@ function EditVilla() {
             [e.target.name]: e.target.value
         })
     }
-    function handleUpdate(e) {
+    const handleUpdate = (e) => {
         e.preventDefault();
-        dispatch(updateVilla(updatedVilla));
+        dispatch(updateVilla({ id: villaId, updatedVilla }));
         navigate('/');
         setUpdatedVilla('');
     }
+
+    // console.log(updatedVilla)
 
     return (
         <div className="add-villa-container">
@@ -43,8 +46,8 @@ function EditVilla() {
                 <input onChange={handleChange} value={updatedVilla.name || ''} type="text" placeholder="Villa Name" name="name" />
                 <input onChange={handleChange} value={updatedVilla.bhk || ''} type="text" placeholder="Bhk?" name="bhk" />
                 <input onChange={handleChange} value={updatedVilla.capacity || ''} type="text" placeholder="Capacity" name="capacity" />
-                <input onChange={handleChange} value={updatedVilla.id || ''} type="text" placeholder="ID" name="id" />
                 <input onChange={handleChange} value={updatedVilla.price || ''} type="text" placeholder="Price" name="price" />
+                <input onChange={handleChange} value={updatedVilla.driveLink || ''} type="text" placeholder="driveLink" name="driveLink" />
                 <button type="submit">Edit Villa</button>
             </form>
             <Link to="/admin">
