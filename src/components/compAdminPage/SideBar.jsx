@@ -1,9 +1,7 @@
 import React from 'react'
-import { fetchAsync } from '../../features/villaInfo/villaInfoSlice'
 import { useDispatch, useSelector } from 'react-redux'
 import { useEffect, useState } from 'react'
-import '../../css/adminPage.css'
-import { deleteVilla } from '../../features/villaInfo/villaInfoSlice'
+import { deleteVilla,fetchAsync } from '../../features/villaInfo/villaInfoSlice'
 import { Link, useParams } from 'react-router-dom'
 
 function SideBar() {
@@ -22,8 +20,10 @@ function SideBar() {
     const [edit, setEdit] = useState(null)
 
 
-    function handleDelete(id) {
-        dispatch(deleteVilla(id));
+   async function handleDelete(id) {
+       await dispatch(deleteVilla(id));
+       await dispatch(fetchAsync());
+
     }
 
     function handleEdit(id) {

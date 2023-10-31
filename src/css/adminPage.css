@@ -33,10 +33,10 @@
     align-items: center;
     margin: 20px;
     padding: 20px;
-    border: 1px solid #ccc;
     border-radius: 5px;
-    background-color: #fff;
-    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 0 5px rgb(0 0 0 / 37%);
+    backdrop-filter: blur(24px);
+    /* color: aquamarine; */
 }
 
 .add-villa-form {
@@ -61,4 +61,11 @@ button[type="submit"] {
     padding: 10px 20px;
     border-radius: 5px;
     cursor: pointer;
+}
+
+.admin-main{
+    /* background: url(Images/Icons/bg.jpg) ; */
+    height: 100vh;
+    width: 100%;
+    overflow: hidden;
 }

@@ -1,6 +1,8 @@
 import React from 'react'
 import SideBar from '../components/compAdminPage/SideBar'
-import ControlPanel from '../components/compAdminPage/ControlPanel'
+import ControlPanel from '../components/compAdminPage/ControlPanel';
+import '../css/adminPage.css'
+
 // import NavBar from '../components/NavBar'
 
 
@@ -11,7 +13,7 @@ function AdminPage() {
         <>
             {/* <NavBar></NavBar> */}
 
-            <div style={{ display: "flex", justifyContent: "space-between", margin: "0px 100px" }}>
+            <div className='admin-main'>
                 <SideBar></SideBar>
                 <ControlPanel></ControlPanel>
             </div>

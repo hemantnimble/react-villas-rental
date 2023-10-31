@@ -9,13 +9,13 @@ import { useEffect, useState } from 'react'
 function Card() {
   const dispatch = useDispatch();
 
-
+  //const villaData = useSelector(state => state=>state.reducerNameInSTORE.actionNameInCreateSlice)
   const villaData = useSelector(state => state.villaInfo.villaInfo)
   useEffect(() => {
     if (!villaData.length) {
       dispatch(fetchAsync());
     }
-  }, [villaData]);
+  }, [dispatch,villaData]);
 
 
   // console.log(villaData)

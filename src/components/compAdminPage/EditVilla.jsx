@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { updateVilla } from '../../features/villaInfo/villaInfoSlice'
+import { updateVilla, fetchAsync } from '../../features/villaInfo/villaInfoSlice'
 import { Link, useParams } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 
@@ -30,9 +30,10 @@ function EditVilla() {
             [e.target.name]: e.target.value
         })
     }
-    const handleUpdate = (e) => {
+    const handleUpdate = async (e) => {
         e.preventDefault();
-        dispatch(updateVilla({ id: villaId, updatedVilla }));
+        await dispatch(updateVilla({ id: villaId, updatedVilla }));
+        await dispatch(fetchAsync())
         navigate('/');
         setUpdatedVilla('');
     }

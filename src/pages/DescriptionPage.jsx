@@ -13,6 +13,7 @@ import { useSelector, useDispatch } from 'react-redux'
 
 function DescriptionPage() {
     const dispatch = useDispatch();
+    const villaData = useSelector(state => state.villaInfo.villaInfo)
 
     useEffect(() => {
         window.scrollTo(0, 0)
@@ -20,9 +21,8 @@ function DescriptionPage() {
             dispatch(fetchAsync());
         }
     }
-    ), [dispatch]
+    ), [villaData]
 
-    const villaData = useSelector(state => state.villaInfo.villaInfo)
 
     const { villaId } = useParams();
     const villa = villaData.find((villa) => villa._id === villaId);
