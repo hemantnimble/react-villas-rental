@@ -22,7 +22,8 @@ function NavBar({ navbar, }) {
         logoText += 'logo-text-description';
         logo += 'logo-image-description';
 
-    } else if (location.pathname.startsWith("")) {
+    }
+    else if (location.pathname.startsWith("")) {
         navbarClass += 'nav-descriptionPage';
         link += 'aaa';
         logoText += 'logo-text-description';
@@ -89,9 +90,6 @@ function NavBar({ navbar, }) {
                         </svg>8999130727</a></li>
                         <Link to="/admin">
                             <li>Admin</li>
-                        </Link>
-                        <Link to="/signup">
-                            <li>_SignUp</li>
                         </Link>
                     </ul>
                 </div>

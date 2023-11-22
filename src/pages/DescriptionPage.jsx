@@ -10,6 +10,7 @@ import NearByPlaces from '../components/CompDescPAge/NearByPalces'
 import { useParams } from 'react-router-dom'
 import { useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
+import BottomNav from '../components/BottomNav'
 
 function DescriptionPage() {
     const dispatch = useDispatch();
@@ -21,7 +22,7 @@ function DescriptionPage() {
             dispatch(fetchAsync());
         }
     }
-    ), [villaData]
+    ), [dispatch,villaData]
 
 
     const { villaId } = useParams();
@@ -186,6 +187,7 @@ function DescriptionPage() {
                 </div>
             </div>
             <Footer></Footer>
+            <BottomNav></BottomNav>
         </>
     )
 }

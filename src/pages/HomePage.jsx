@@ -5,6 +5,7 @@ import NavBar from '../components/NavBar'
 import Faqs from '../components/Faqs'
 import Footer from '../components/Footer'
 import { useState } from 'react'
+import BottomNav from '../components/BottomNav'
 
 function HomePage() {
 
@@ -126,6 +127,7 @@ function HomePage() {
       </div>
       <Faqs></Faqs>
       <Footer></Footer>
+      <BottomNav></BottomNav>
     </div>
 
   )

@@ -1,71 +1,20 @@
-/* styles.css (or your preferred CSS file) */
+.admin-main {
+    margin-top: 80px;
+    display: flex;
+}
 
+/* SIDEBAR CSS */
 .sidebar {
-    width: 300px;
-    height: 100%;
-    background-color: #333;
-    color: #fff;
-    padding: 20px;
-    position: fixed;
-    top: 0;
-    left: 0;
-    overflow-y: auto;
-}
-
-.villa-item {
-    margin-top: 20px;
-}
-
-.villa-item button {
-    background-color: #007bff;
-    color: #fff;
-    border: none;
-    padding: 5px 10px;
-    cursor: pointer;
-}
-
-
-/* styles.css (or your preferred CSS file) */
-
-.add-villa-container {
+    margin: -10px 30px;
     display: flex;
     flex-direction: column;
-    align-items: center;
-    margin: 20px;
-    padding: 20px;
-    border-radius: 5px;
-    box-shadow: 0 0 5px rgb(0 0 0 / 37%);
-    backdrop-filter: blur(24px);
-    /* color: aquamarine; */
-}
-
-.add-villa-form {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-    width: 300px;
-    align-items: center;
-}
-
-input[type="text"] {
-    width: 100%;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-}
-
-button[type="submit"] {
-    background-color: #007bff;
-    color: #fff;
-    border: none;
-    padding: 10px 20px;
-    border-radius: 5px;
-    cursor: pointer;
-}
-
-.admin-main{
-    /* background: url(Images/Icons/bg.jpg) ; */
+    align-items: flex-start;
+    min-width: 20%;
     height: 100vh;
-    width: 100%;
-    overflow: hidden;
+    box-shadow: 6px 8px 11px #cfcfcf66;
+}
+
+.sidebar ul li{
+    list-style: none;
+    padding: 20px 0px;
 }
