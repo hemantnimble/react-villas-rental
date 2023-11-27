@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react'
-import NavBar from '../components/NavBar'
-import RulesPolicies from '../components/RulesPolicies'
-import Footer from '../components/Footer'
+import NavBar from '../components/common/NavBar'
+import RulesPolicies from '../components/common/RulesPolicies'
+import Footer from '../components/common/Footer'
 
 function AboutPage() {
 

@@ -1,20 +1,14 @@
 import React, { useEffect } from 'react';
-import AddVilla from './AddVilla';
+import AddedVillas from './AddedVillas';
 import { Link } from 'react-router-dom';
+import '../../css/adminPage.css'
 
-function ControlPanel() {    
+function ControlPanel() {
 
     return (
         <>
-            <div>
-                <h1>ControlPanel</h1>
-                <AddVilla></AddVilla>
-                <Link to="/">
-                    <button>Home Page</button>
-                </Link>
-            </div>
-
-
+            <h1><i className="fa-solid fa-sliders"></i> Control Panel</h1>
+            <AddedVillas></AddedVillas>
         </>
     );
 }

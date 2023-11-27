@@ -8,6 +8,7 @@ import { useEffect, useState } from 'react'
 
 function Card() {
   const dispatch = useDispatch();
+  const baseURL = 'http://localhost:3000/';
 
   //const villaData = useSelector(state => state=>state.reducerNameInSTORE.actionNameInCreateSlice)
   const villaData = useSelector(state => state.villaInfo.villaInfo)
@@ -15,7 +16,7 @@ function Card() {
     if (!villaData.length) {
       dispatch(fetchAsync());
     }
-  }, [dispatch,villaData]);
+  }, [dispatch, villaData]);
 
 
   // console.log(villaData)
@@ -23,6 +24,8 @@ function Card() {
     <>
       {
         villaData.map((data) => {
+          const firstImage = data.images?.length > 0 ? data.images[0] : null;
+
           return <Link key={data._id} to={`/${data._id}`}>
             <div className="card">
               <div className="card-image">
@@ -35,7 +38,7 @@ function Card() {
                     <img src={data.luxuryBadge} alt="" />
                   </div>
                 }
-                <img src={data.thumbnail} alt="" />
+                <img src={`${baseURL}${firstImage}`?`${baseURL}${firstImage}`:data.thumbnail} alt="img" />
               </div>
               <div className="mar">
                 <div className="villa-name-main">
@@ -43,7 +46,7 @@ function Card() {
                   <p className="villa-location">Lonavala,Maharashtra</p>
                 </div>
                 <div className="discription">
-                  <p>{data.bhk} | {data.baths} | {data.capacity}</p>
+                  <p>{data.bhk} Bedrooms | {data.baths} Baths BathsBathsBaths | {data.capacity} Guests</p>
                 </div>
                 <div className="villa-price-main">
                   <p className="price">₹{data.price}</p>

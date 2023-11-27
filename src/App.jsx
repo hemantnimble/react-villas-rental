@@ -4,6 +4,7 @@ import DescriptionPage from './pages/DescriptionPage'
 import AboutPage from './pages/AboutPage'
 import AdminPage from './pages/AdminPage'
 import EditVilla from './components/compAdminPage/EditVilla'
+import AddVilla from './components/compAdminPage/AddVilla'
 
 function App() {
 
@@ -15,6 +16,7 @@ function App() {
           <Route path='/:villaId' element={<DescriptionPage />} />
           <Route path='/about' element={<AboutPage />} />
           <Route path='/admin' element={<AdminPage />} />
+          <Route path='/admin/add' element={<AddVilla />} />
           <Route path='/edit/:villaId' element={<EditVilla />} />
         </Routes>
       </Main>

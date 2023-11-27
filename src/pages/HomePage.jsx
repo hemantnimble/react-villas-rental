@@ -1,11 +1,11 @@
 import React from 'react'
 import Card from '../components/compMainPage/Card'
 import '../css/mainPage.css'
-import NavBar from '../components/NavBar'
-import Faqs from '../components/Faqs'
-import Footer from '../components/Footer'
+import NavBar from '../components/common/NavBar';
+import Faqs from '../components/common/Faqs'
+import Footer from '../components/common/Footer'
 import { useState } from 'react'
-import BottomNav from '../components/BottomNav'
+import BottomNav from '../components/common/BottomNav'
 
 function HomePage() {
 

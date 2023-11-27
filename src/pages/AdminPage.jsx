@@ -1,17 +1,15 @@
 import React from 'react'
-import SideBar from '../components/compAdminPage/SideBar'
 import ControlPanel from '../components/compAdminPage/ControlPanel';
 import '../css/adminPage.css'
-import NavBar from '../components/NavBar'
+import NavAdmin from '../components/compAdminPage/NavAdmin';
 
 
 function AdminPage() {
 
     return (
         <>
-            <NavBar></NavBar>
-            <div className='admin-main'>
-                <SideBar></SideBar>
+            <NavAdmin></NavAdmin>
+            <div className="admin-page">
                 <ControlPanel></ControlPanel>
             </div>
         </>

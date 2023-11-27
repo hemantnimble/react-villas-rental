@@ -49,9 +49,9 @@ export const fetchAsync = createAsyncThunk(
 
 // adding new villa api call 
 
-export const addNewVilla = createAsyncThunk('villaInfo/addNewVilla', async (villaData, formdata) => {
+export const addNewVilla = createAsyncThunk('villaInfo/addNewVilla', async ( formdata) => {
   try {
-    const response = await axios.post('http://localhost:3000/villas/addvilla', villaData, formdata);
+    const response = await axios.post('http://localhost:3000/villas/addvilla', formdata);
     return response.data; 
   } catch (error) {
     console.error('Error adding villa:', error);

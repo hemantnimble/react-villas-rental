@@ -11,6 +11,7 @@ function DescTop() {
     const { villaId } = useParams();
     const villa = villaData.find((villa) => villa._id === villaId);
     const { images, thumbnail, mainImg2, mainImg3, driveLink, luxuryBadge } = villa
+    const baseURL = 'http://localhost:3000/';
 
     const [modal, setModal] = useState(false);
 
@@ -35,7 +36,7 @@ function DescTop() {
                         <div className="read-more-cont">
                             {
                                 images.map((img, id) => {
-                                    return <img key={id} src={img} alt="img" />
+                                    return <img key={id} src={`${baseURL}${img}`} alt="img" />
                                 })
                             }
                             <div>
@@ -55,17 +56,17 @@ function DescTop() {
     return (
         <>
             <div className="images-main">
-                <div className="image-1"><img src={mainImg2} alt="img" />
+                <div className="image-1"><img src={`${baseURL}${images[0]}`} alt="img" />
                 </div>
                 <div className="image-2">{luxuryBadge &&
                     <div className="luxury-badge">
                         <img src={luxuryBadge} alt="" id="luxury-badge" />
                     </div>
                 }
-                    <img src={thumbnail} alt="img" />
+                    <img src={`${baseURL}${images[2]}`} alt="img" />
                     <button onClick={handlePopUp} className="btn" type="button">View Photos</button>
                 </div>
-                <div className="image-3"><img src={mainImg3} alt="img" />
+                <div className="image-3"><img src={`${baseURL}${images[1]}`} alt="img" />
                 </div>
             </div>
             {modal && <Modal />}

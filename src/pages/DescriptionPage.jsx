@@ -1,16 +1,16 @@
 import React from 'react'
-import NavBar from '../components/NavBar'
+import NavBar from '../components/common/NavBar';
 import DescTop from '../components/CompDescPAge/DescTop'
 import '../css/description.css'
 import PriceBox from '../components/CompDescPAge/PriceBox'
-import Footer from '../components/Footer'
+import Footer from '../components/common/Footer'
 import FoodMenu from '../components/CompDescPAge/FoodMenu'
-import RulesPolicies from '../components/RulesPolicies'
+import RulesPolicies from '../components/common/RulesPolicies'
 import NearByPlaces from '../components/CompDescPAge/NearByPalces'
 import { useParams } from 'react-router-dom'
 import { useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
-import BottomNav from '../components/BottomNav'
+import BottomNav from '../components/common/BottomNav'
 
 function DescriptionPage() {
     const dispatch = useDispatch();
