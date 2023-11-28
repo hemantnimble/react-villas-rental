@@ -14,11 +14,11 @@ function PriceBox() {
 
         <div className="main-left">
             <div className="heading-one">
-                <p className="del-price">{del_price}</p>
-                <p className="main-price">{price}<span className="after-price">/per-night
+                <p className="del-price">₹{del_price}</p>
+                <p className="main-price">₹{price}<span className="after-price">/per-night
                     (Week-END/Holiday)</span>
                 </p>
-                <p className="main-price-wkday">{weekday_price}<span className="after-price">/-per-night
+                <p className="main-price-wkday">₹{weekday_price}<span className="after-price">/-per-night
                     (Week-DAY)</span>
                 </p>
                 <p className="above-price-main">Price given above is for upto <span className="above-guests"> {price_capacity} Guests</span></p>

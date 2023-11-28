@@ -2,9 +2,15 @@ import React from 'react'
 import ControlPanel from '../components/compAdminPage/ControlPanel';
 import '../css/adminPage.css'
 import NavAdmin from '../components/compAdminPage/NavAdmin';
+import { useEffect } from 'react';
 
 
 function AdminPage() {
+
+    useEffect(() => {
+        window.scrollTo(0, 0)
+    }
+    ), []
 
     return (
         <>

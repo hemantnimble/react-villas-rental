@@ -46,7 +46,7 @@ function Card() {
                   <p className="villa-location">Lonavala,Maharashtra</p>
                 </div>
                 <div className="discription">
-                  <p>{data.bhk} Bedrooms | {data.baths} Baths BathsBathsBaths | {data.capacity} Guests</p>
+                  <p>{data.bhk} Bedrooms | {data.baths} Baths | {data.capacity} Guests</p>
                 </div>
                 <div className="villa-price-main">
                   <p className="price">₹{data.price}</p>

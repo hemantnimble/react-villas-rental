@@ -22,14 +22,15 @@ function DescriptionPage() {
             dispatch(fetchAsync());
         }
     }
-    ), [dispatch,villaData]
+    ), [dispatch, villaData]
 
 
     const { villaId } = useParams();
     const villa = villaData.find((villa) => villa._id === villaId);
-    const { name, bhk, baths, hall, capacity, about, location } = villa
+    const { name, bhk, baths, hall, capacity, about, location, amenities } = villa
+    const { wifi, tv } = amenities;
 
-
+    // console.log(wifi,tv)
     return (
         <>
             <NavBar></NavBar>
@@ -62,8 +63,8 @@ function DescriptionPage() {
                             <div className="mid-line">
                                 <ol>
                                     <li>Entire Villa</li>
-                                    <li>{bhk}</li>
-                                    <li>{hall}</li>
+                                    <li>{bhk} Beds</li>
+                                    <li>{hall}{hall === 1 ? 'Hall' : 'Hall'} </li>
                                     <li>{baths} Baths</li>
                                     <li>Pvt Pool</li>
                                 </ol>
@@ -77,10 +78,10 @@ function DescriptionPage() {
                             <div className="info-icons">
                                 <div className="icons-main">
                                     <div className="info-icons-sec"><i className="fa-solid fa-users" id="first-icon"></i>
-                                        <p>{capacity}</p>
+                                        <p>{capacity} Guests</p>
                                     </div>
                                     <div className="info-icons-sec"> <i className="fa-sharp fa-solid fa-house" id="second-icon"></i>
-                                        <p>{bhk}</p>
+                                        <p>{bhk} Bhk</p>
                                     </div>
                                     <div className="info-icons-sec"><i className="fa-sharp fa-solid fa-person-swimming"
                                         id="third-icon"></i>
@@ -97,7 +98,7 @@ function DescriptionPage() {
                                         <ol>
                                             <li><a href="#about">About</a>
                                             </li><li>
-                                            </li><li><a href="#aminities">Aminities</a>
+                                            </li><li><a href="#aminities">Amenities</a>
                                             </li><li>
                                             </li><li><a href="#meals">Meals</a>
                                             </li><li>
@@ -118,7 +119,7 @@ function DescriptionPage() {
                                     {/* ............................... AMINITIES........................  */}
                                     <div className="aminities">
                                         <div className="aminities-heading" id="aminities">
-                                            <p>Aminities</p>
+                                            <p>Amenities</p>
                                         </div>
                                         <div className="aminities-icons-texts">
                                             <div className="aminities-icons-sec"><i> <img src="../Images/Icons/grass.png" alt="grass" /> </i>
@@ -140,9 +141,9 @@ function DescriptionPage() {
                                             <div className="aminities-icons-sec"><i className="fa-solid fa-droplet" />
                                                 <p>Geysers for Hot Water</p>
                                             </div>
-                                            <div className="aminities-icons-sec"><i className="fa-solid fa-tv" />
+                                            {tv && <div className="aminities-icons-sec"><i className="fa-solid fa-tv" />
                                                 <p>LED Tv</p>
-                                            </div>
+                                            </div>}
                                             <div className="aminities-icons-sec"><i className="fa-solid fa-glass-water" />
                                                 <p>Water Purifier</p>
                                             </div>

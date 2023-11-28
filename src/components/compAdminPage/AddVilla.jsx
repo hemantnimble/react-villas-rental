@@ -2,12 +2,15 @@ import React, { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { addNewVilla, fetchAsync } from '../../features/villaInfo/villaInfoSlice';
 import { useForm } from "react-hook-form";
-import axios from 'axios';
+import { useEffect } from 'react';
 import NavAdmin from './NavAdmin';
 
 
 function AddVilla() {
-
+    useEffect(() => {
+        window.scrollTo(0, 0)
+    }
+    ), []
     const dispatch = useDispatch();
     const villaData = useSelector(state => state.villaInfo.villaInfo);
 
@@ -46,6 +49,13 @@ function AddVilla() {
             for (let i = 0; i < images.length; i++) {
                 formdata.append('images', images[i]);
             }
+
+            // Append selected amenities
+            formdata.append('amenities.wifi', values.wifi === true ? 'true' : 'false');
+            formdata.append('amenities.tv', values.tv === true ? 'true' : 'false');
+            // formdata.append('amenities', JSON.stringify({ wifi: values.wifi === true, tv: values.tv === true }));
+
+
             await dispatch(addNewVilla(formdata));
             await dispatch(fetchAsync());
             console.log(formdata)
@@ -86,7 +96,7 @@ function AddVilla() {
                         </div> */}
                         <div className="input-field">
                             <label>Bhk</label>
-                            <input {...register('bhk', { required: "Please Enter number od Bhk" })} type="number" placeholder="Enter number of bedrooms" required />
+                            <input  {...register('bhk', { required: "Please Enter number od Bhk" })} type="number" placeholder="Enter number of bedrooms" required />
                             {errors.bhk && <p>{errors.bhk.message}</p>}
                         </div>
                         {/* <div className="input-field">
@@ -137,10 +147,10 @@ function AddVilla() {
                                 <option>Female</option>
                                 <option>Others</option>
                             </select>
-                        </div>
+                        </div> */}
                         <div className="checkbox-wrapper-16">
                             <label className="checkbox-wrapper">
-                                <input type="checkbox" className="checkbox-input" />
+                                <input  {...register('wifi', { required: "Please Enter Your Name" })} type="checkbox" className="checkbox-input" />
                                 <span className="checkbox-tile">
                                     <span className="checkbox-icon">
                                         <svg xmlns="http://www.w3.org/2000/svg" width={192} height={192} fill="currentColor" viewBox="0 0 256 256">
@@ -150,10 +160,24 @@ function AddVilla() {
                                             <line x1={16} y1={104} x2={240} y2={104} fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth={12} />
                                         </svg>
                                     </span>
-                                    <span className="checkbox-label">Sketch</span>
+                                    <span className="checkbox-label">Wifi</span>
                                 </span>
                             </label>
-                        </div> */}
+                            <label className="checkbox-wrapper">
+                                <input {...register('tv')} type="checkbox" className="checkbox-input" />
+                                <span className="checkbox-tile">
+                                    <span className="checkbox-icon">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width={192} height={192} fill="currentColor" viewBox="0 0 256 256">
+                                            <rect width={256} height={256} fill="none" />
+                                            <polygon points="72 40 184 40 240 104 128 224 16 104 72 40" fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth={12} />
+                                            <polygon points="177.091 104 128 224 78.909 104 128 40 177.091 104" fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth={12} />
+                                            <line x1={16} y1={104} x2={240} y2={104} fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth={12} />
+                                        </svg>
+                                    </span>
+                                    <span className="checkbox-label">Tv</span>
+                                </span>
+                            </label>
+                        </div>
 
                     </div>
                     <button type='submit' className="nextBtn">
