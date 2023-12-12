@@ -26,7 +26,7 @@ function Card() {
         villaData.map((data) => {
           const firstImage = data.images?.length > 0 ? data.images[0] : null;
 
-          return <Link key={data._id} to={`/${data._id}`}>
+          return <Link key={data._id} to={`/villa/${data._id}`}>
             <div className="card">
               <div className="card-image">
                 <div className="best-rated">

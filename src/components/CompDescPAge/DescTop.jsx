@@ -1,16 +1,27 @@
 import React, { useState } from 'react'
 // import villaData from '../../../data';
 import { useParams } from 'react-router-dom';
-import { useSelector } from 'react-redux';
+import { useEffect, } from 'react';
+import { useSelector, useDispatch } from 'react-redux'
+import { fetchVillaById, singleVillaById } from '../../features/villaInfo/villaInfoSlice';
+
 
 
 
 function DescTop() {
-    const villaData = useSelector(state => state.villaInfo.villaInfo)
-   
+    const villaData = useSelector(singleVillaById)
+    const dispatch = useDispatch();
+
+    useEffect(() => {
+        if (villaData === null) {
+            dispatch(fetchVillaById(villaId));
+        }
+    }
+    ), [dispatch, villaData]
+
     const { villaId } = useParams();
-    const villa = villaData.find((villa) => villa._id === villaId);
-    const { images, thumbnail, mainImg2, mainImg3, driveLink, luxuryBadge } = villa
+    // const villa = villaData.find((villa) => villa._id === villaId);
+    const { images, thumbnail, mainImg2, mainImg3, driveLink, luxuryBadge } = villaData
     const baseURL = 'http://localhost:3000/';
 
     const [modal, setModal] = useState(false);
@@ -24,7 +35,10 @@ function DescTop() {
         setModal(false)
         document.body.classList.remove('no-scroll');
     }
-
+    // console.log(images);         // Log the entire array
+    // console.log(images[1]);      // Log the element at index 1
+    // console.log(images[2]);      // Log the element at index 2
+    
     const Modal = () => {
         return (
             <div className="popup-box">

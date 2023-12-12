@@ -4,8 +4,8 @@ import axios from "axios";
 
 
 const initialState = {
-  users: [],
-  loggedInUser: null,
+  // users: [],
+  admin: null,
   status: 'idle',
   error: { type: null, message: null },
   success: null,
@@ -29,7 +29,7 @@ export const userSlice = createSlice({
       })
       .addCase(login.fulfilled, (state, action) => {
         state.status = 'idle';
-        state.loggedInUser = action.payload; // 
+        state.admin = action.payload; // 
         state.success = 'Login successfully'; // Set success message on successful registration
       })
       .addCase(login.rejected, (state, action) => {

@@ -4,6 +4,7 @@ import { addNewVilla, fetchAsync } from '../../features/villaInfo/villaInfoSlice
 import { useForm } from "react-hook-form";
 import { useEffect } from 'react';
 import NavAdmin from './NavAdmin';
+import { useNavigate } from 'react-router-dom';
 
 
 function AddVilla() {
@@ -13,6 +14,7 @@ function AddVilla() {
     ), []
     const dispatch = useDispatch();
     const villaData = useSelector(state => state.villaInfo.villaInfo);
+    const navigate = useNavigate();
 
     const {
         register,
@@ -21,14 +23,21 @@ function AddVilla() {
         formState: { errors },
     } = useForm()
 
-
     const [images, setimages] = useState(villaData);
-    // console.log(images)
-
-
+    const [imagePreviews, setImagePreviews] = useState([]);
 
     function handleImgChange(e) {
         setimages(e.target.files);
+
+        const previews = [];
+        for (let i = 0; i < e.target.files.length; i++) {
+            const reader = new FileReader();
+            reader.onload = (event) => {
+                previews.push(event.target.result);
+                setImagePreviews([...previews]);
+            };
+            reader.readAsDataURL(e.target.files[i]);
+        }
     }
 
     async function OnSubmit(values) {
@@ -44,6 +53,7 @@ function AddVilla() {
             formdata.append('capacity', values.capacity);
             formdata.append('price', values.price);
             formdata.append('driveLink', values.driveLink);
+            formdata.append('halls', values.halls);
 
             // Append each image separately
             for (let i = 0; i < images.length; i++) {
@@ -55,28 +65,16 @@ function AddVilla() {
             formdata.append('amenities.tv', values.tv === true ? 'true' : 'false');
             // formdata.append('amenities', JSON.stringify({ wifi: values.wifi === true, tv: values.tv === true }));
 
-
             await dispatch(addNewVilla(formdata));
             await dispatch(fetchAsync());
-            console.log(formdata)
+
+            navigate('/')
         }
     }
-
 
     return (
         <>
             {/* <NavAdmin></NavAdmin> */}
-            {/* <div className="container">
-                <h1>Add Villa</h1>
-                <form className="input-field fields" >
-                    <input type="text" placeholder="Villa Name" />
-                    <input  type="text" placeholder="Bhk?" />
-                    <input  type="text" placeholder="Capacity" />
-                    <input  type="text" placeholder="Price" />
-                    <input  type="text" placeholder="Drive Link" />
-                    <button type="submit">Add Villa</button>
-                </form>
-            </div> */}
             <div className="container">
                 <header>Add New Villa/Property</header>
                 <form noValidate onSubmit={handleSubmit(OnSubmit)} encType="multipart/form-data">
@@ -102,11 +100,11 @@ function AddVilla() {
                         {/* <div className="input-field">
                             <label>Bathrooms</label>
                             <input type="number" placeholder="Enter number of bathrooms" required />
-                        </div>
+                        </div> */}
                         <div className="input-field">
                             <label>Halls</label>
-                            <input type="number" placeholder="Enter number of halls" required />
-                        </div> */}
+                            <input {...register('halls', { required: "Please Enter Your Name" })} type="number" placeholder="Enter number of halls" required />
+                        </div>
                         <div className="input-field">
                             <label>Guests capacity(format: 10-12)</label>
                             <input {...register('capacity', { required: "Please Enter Your Name" })} type="text" placeholder="Enter number capacity of guests" required />
@@ -119,7 +117,12 @@ function AddVilla() {
                             <label>Images</label>
                             <input name='images' type="file" multiple onChange={handleImgChange} />
                         </div>
-                        {/* <div className="input-field">
+                        {/* Display selected image previews */}
+                        <div className="image-preview-container">
+                            {imagePreviews.map((preview, index) => (
+                                <img key={index} src={preview} alt={`Preview ${index}`} className="image-preview" />
+                            ))}
+                        </div>                        {/* <div className="input-field">
                             <label>Price (Weekdays)</label>
                             <input type="number" placeholder="Enter price for weekdays" required />
                         </div>
@@ -150,7 +153,7 @@ function AddVilla() {
                         </div> */}
                         <div className="checkbox-wrapper-16">
                             <label className="checkbox-wrapper">
-                                <input  {...register('wifi', { required: "Please Enter Your Name" })} type="checkbox" className="checkbox-input" />
+                                <input  {...register('wifi')} type="checkbox" className="checkbox-input" />
                                 <span className="checkbox-tile">
                                     <span className="checkbox-icon">
                                         <svg xmlns="http://www.w3.org/2000/svg" width={192} height={192} fill="currentColor" viewBox="0 0 256 256">

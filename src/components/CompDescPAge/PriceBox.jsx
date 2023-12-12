@@ -1,15 +1,28 @@
 import React from 'react'
 import { useParams } from 'react-router-dom'
-import { useSelector } from 'react-redux'
+import { useSelector, useDispatch } from 'react-redux'
+import { useEffect } from 'react'
+import { fetchVillaById, singleVillaById } from '../../features/villaInfo/villaInfoSlice';
+
+
 
 
 function PriceBox() {
-    const villaData = useSelector(state => state.villaInfo.villaInfo)
 
+    const dispatch = useDispatch();
     const { villaId } = useParams();
-    const villa = villaData.find((villa) => villa._id === villaId)
-    const { price, price_capacity, weekday_price, del_price, looking } = villa
-   
+    
+    useEffect(() => {
+        if (villaData === null) {
+            dispatch(fetchVillaById(villaId));
+        }
+    }
+    ), [dispatch, villaId]
+    
+    const villaData = useSelector(singleVillaById)
+
+    const { price, price_capacity, weekday_price, del_price, looking } = villaData
+
     return (
 
         <div className="main-left">

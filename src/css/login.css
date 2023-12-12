@@ -1,22 +1,6 @@
 /* Google Fonts - Poppins */
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap');
 
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Poppins', sans-serif;
-}
 
-.container {
-    height: 100vh;
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: #4070f4;
-    column-gap: 30px;
-}
 
 .form {
     margin: auto;
@@ -62,7 +46,11 @@ form {
 .field input {
     outline: none;
     padding: 0 15px;
-    border: 1px solid#CACACA;
+    /* border: 1px solid#CACACA; */
+    background: #cbcbcb52;
+}
+.field input::placeholder{
+    font-size: 13px;
 }
 
 .field input:focus {
@@ -82,13 +70,13 @@ form {
 
 .field button {
     color: #fff;
-    background-color: #0171d3;
+    background-color: #324054;
     transition: all 0.3s ease;
     cursor: pointer;
 }
 
 .field button:hover {
-    background-color: #016dcb;
+    background-color: #23344d;
 }
 
 .form-link {

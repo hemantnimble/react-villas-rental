@@ -11,23 +11,34 @@ import { useParams } from 'react-router-dom'
 import { useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import BottomNav from '../components/common/BottomNav'
+import { fetchVillaById, singleVillaById } from '../features/villaInfo/villaInfoSlice';
+
 
 function DescriptionPage() {
     const dispatch = useDispatch();
-    const villaData = useSelector(state => state.villaInfo.villaInfo)
+    const { villaId } = useParams();
 
+    const villaData = useSelector(singleVillaById)
     useEffect(() => {
         window.scrollTo(0, 0)
-        if (!villaData.length) {
-            dispatch(fetchAsync());
+        if (!villaData || villaData._id !== villaId) {
+            dispatch(fetchVillaById(villaId));
         }
     }
-    ), [dispatch, villaData]
+    ), [dispatch, villaId]
 
+    // console.log(villaData)
 
-    const { villaId } = useParams();
-    const villa = villaData.find((villa) => villa._id === villaId);
-    const { name, bhk, baths, hall, capacity, about, location, amenities } = villa
+    if (!villaData) {
+        return <div className='loader-desc'>
+            <svg viewBox="25 25 50 50">
+                <circle r="20" cy="50" cx="50"></circle>
+            </svg>
+        </div>
+    }
+
+    // const villa = villaData.find((villa) => villa._id === villaId);
+    const { name, bhk, baths, halls, capacity, about, location, amenities } = villaData
     const { wifi, tv } = amenities;
 
     // console.log(wifi,tv)
@@ -64,7 +75,7 @@ function DescriptionPage() {
                                 <ol>
                                     <li>Entire Villa</li>
                                     <li>{bhk} Beds</li>
-                                    <li>{hall}{hall === 1 ? 'Hall' : 'Hall'} </li>
+                                    <li>{halls} {halls === 1 ? 'Hall' : 'Halls'} </li>
                                     <li>{baths} Baths</li>
                                     <li>Pvt Pool</li>
                                 </ol>
