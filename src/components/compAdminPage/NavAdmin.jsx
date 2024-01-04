@@ -4,7 +4,6 @@ import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { logOut } from '../../features/users/userSlice';
 import toast from 'react-hot-toast';
-import { clearLoginError, clearLoginSuccess } from '../../features/users/userSlice';
 
 
 function NavAdmin() {
