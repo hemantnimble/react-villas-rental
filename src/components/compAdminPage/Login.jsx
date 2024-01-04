@@ -5,14 +5,14 @@ import { useDispatch, useSelector } from 'react-redux';
 import { login } from '../../features/users/userSlice';
 import { useForm } from "react-hook-form";
 import { useNavigate } from 'react-router-dom';
-import toast, { Toaster } from 'react-hot-toast';
+import toast from 'react-hot-toast';
 import { useEffect } from 'react';
 
 
 function Login() {
     const dispatch = useDispatch();
-    const error = useSelector(state => state.users.error);
-    const success = useSelector(state => state.users.success);
+    const error = useSelector(state => state.users.errorlogin);
+    const status = useSelector(state => state.users.status);
     const navigate = useNavigate();
 
 
@@ -25,29 +25,29 @@ function Login() {
 
 
     async function onSubmit(values) {
-        try {
-            await dispatch(login(values));
-            if (success) {
-                navigate('/admin');
-            }
-        } catch (err) {
-            // Handle error, if any
-        }
+        await dispatch(login(values));
     }
 
-   
+    useEffect(() => {
+        if (status === 'loginfulfilled') {
+            toast.success('Login successful');
+            navigate('/admin');
+        } else if (status === 'loginrejected' && error.type && error.message) {
+            toast.error(`${error.message}`);
+        }
+    }, [status, error, navigate]);;
+
 
     // console.log(errors)
     return (
         <>
-            <Toaster position='top-center'> </Toaster>
             <div className="main-login">
                 <div className='form-img'>
                     {/* <img src="Images/thumbnails/about.jpg" alt="" /> */}
                 </div>
                 <div className="form signup">
-                    {success && (<p style={{ color: 'green' }}>{success}</p>)}
-                    {error.type && (<p style={{ color: 'red' }}>Error: {error.message}</p>)}
+                    {/* {success && (<p style={{ color: 'green' }}>{success}</p>)} */}
+                    {/* {error.type && (<p style={{ color: 'red' }}>Error: {error.message}</p>)} */}
 
                     <div className="form-content">
                         <header>LogIn</header>

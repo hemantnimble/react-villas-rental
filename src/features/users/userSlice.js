@@ -6,35 +6,67 @@ import axios from "axios";
 const initialState = {
   // users: [],
   admin: null,
+  loggedIn: null,
   status: 'idle',
-  error: { type: null, message: null },
-  success: null,
+  errorlogin: { type: null, message: null },
+  successlogin: null,
+  errorlogout: { type: null, message: null },
+  successlogout: null,
 };
 
 export const userSlice = createSlice({
   name: 'users',
   initialState,
   reducers: {
-    clearError: (state) => {
-      state.error = null;
+    clearLoginError: (state) => {
+      state.errorlogin = null;
     },
-    clearSuccess: state => {
-      state.success = null;
+    clearLogoutError: (state) => {
+      state.errorlogout = null;
+    },
+    clearLoginSuccess: state => {
+      state.successlogin = null;
+    },
+    clearLogoutSuccess: state => {
+      state.successlogout = null;
     }
   },
   extraReducers: (builder) => {
     builder
       .addCase(login.pending, (state) => {
-        state.status = 'loading';
+        state.status = 'loginloading';
       })
       .addCase(login.fulfilled, (state, action) => {
-        state.status = 'idle';
+        state.status = 'loginfulfilled';
         state.admin = action.payload; // 
-        state.success = 'Login successfully'; // Set success message on successful registration
+        state.successlogin = 'Login successfully'; // Set success message on successful registration
       })
       .addCase(login.rejected, (state, action) => {
-        state.status = 'idle';
-        state.error = action.payload;
+        state.status = 'loginrejected';
+        state.errorlogin = action.payload;
+      })
+      .addCase(loggedIn.pending, (state) => {
+        state.status = 'authloading';
+      })
+      .addCase(loggedIn.fulfilled, (state, action) => {
+        state.status = 'authfulfilled';
+        state.loggedIn = action.payload; // 
+      })
+      .addCase(loggedIn.rejected, (state) => {
+        state.status = 'authrejected';
+      })
+      ///logout
+      .addCase(logOut.pending, (state) => {
+        state.status = 'logoutloading';
+      })
+      .addCase(logOut.fulfilled, (state, action) => {
+        state.status = 'logoutfulfilled';
+        state.loggedIn = false;
+        state.successlogout = 'Logout successfully'; // Set success message on successful registration 
+      })
+      .addCase(logOut.rejected, (state) => {
+        state.status = 'logoutrejected';
+        state.errorlogout = action.payload;
       })
   },
 });
@@ -53,7 +85,6 @@ export default userSlice.reducer;
 
 // adding new user
 
-export const { clearError } = userSlice.actions;
 
 
 // export const addNewUser = createAsyncThunk('users/addNewUser', async (values, { rejectWithValue }) => {
@@ -87,7 +118,7 @@ export const { clearError } = userSlice.actions;
 
 export const login = createAsyncThunk('users/login', async (values, { rejectWithValue }) => {
   try {
-    const response = await axios.post(`http://localhost:3000/users/login`, values, );
+    const response = await axios.post(`http://localhost:3000/users/login`, values,);
     return response.data;
   } catch (error) {
     console.error('Error logging in:', error);
@@ -102,4 +133,38 @@ export const login = createAsyncThunk('users/login', async (values, { rejectWith
 });
 
 
+//logged in auth
+
+export const loggedIn = createAsyncThunk('users/loggedin', async () => {
+  try {
+    // Send the token in the Authorization header
+    const response = await axios.get('http://localhost:3000/users/loggedin', {
+      withCredentials: true, // Include credentials (cookies) in the request
+      headers: {
+        'Content-Type': 'application/json',
+        // Other headers as needed
+      },
+    });
+    return response.data;
+  } catch (error) {
+    console.error('Error Authenticating:', error);
+  }
+});
+
+//Logout
+export const logOut = createAsyncThunk('users/logout', async () => {
+  try {
+    // Make a POST request to the server's logout endpoint
+    const response = await axios.post('http://localhost:3000/users/logout', {}, { withCredentials: true });
+
+    // Handle successful logout, e.g., redirect to login page
+    console.log(response.data);
+  } catch (error) {
+    console.error('Error during logout:', error);
+    throw error; // Propagate the error for handling in the rejected case
+  }
+
+});
+
+export const { clearLoginError, clearLogoutError,clearLoginSuccess,clearLogoutSuccess } = userSlice.actions;
 

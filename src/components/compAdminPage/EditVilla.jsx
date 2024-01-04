@@ -47,8 +47,8 @@ function EditVilla() {
                 <input onChange={handleChange} value={updatedVilla.name || ''} type="text" placeholder="Villa Name" name="name" />
                 <input onChange={handleChange} value={updatedVilla.bhk || ''} type="text" placeholder="Bhk?" name="bhk" />
                 <input onChange={handleChange} value={updatedVilla.capacity || ''} type="text" placeholder="Capacity" name="capacity" />
-                <input onChange={handleChange} value={updatedVilla.price || ''} type="text" placeholder="Price" name="price" />
-                <input onChange={handleChange} value={updatedVilla.driveLink || ''} type="text" placeholder="driveLink" name="driveLink" />
+                <input onChange={handleChange} value={updatedVilla.weekendprice || ''} type="text" placeholder=" Weekend Price" name="price" />
+                <input onChange={handleChange} value={updatedVilla.drivelink || ''} type="text" placeholder="drivelink" name="drivelink" />
                 <button type="submit">Edit Villa</button>
             </form>
             <Link to="/admin">

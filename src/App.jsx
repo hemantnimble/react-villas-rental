@@ -8,11 +8,16 @@ import AddVilla from './components/compAdminPage/AddVilla'
 import Login from './components/compAdminPage/Login'
 import ProtectedRoutes from './components/compAdminPage/ProtectedRoutes'
 import NotFound from './components/common/NotFound'
+import { Toaster } from 'react-hot-toast'
 
 function App() {
 
   return (
     <>
+      <Toaster
+        position="top-center"
+        reverseOrder={false}
+      />
       <Main>
         <Routes>
           <Route path='/' element={<HomePage />} />

@@ -13,18 +13,9 @@ export const villaInfoSlice = createSlice({
   name: 'villaInfo',
   initialState,
   reducers: {
-    // addNewVilla: (state, action) => {
-    //   state.villaInfo.push(action.payload);
-    // },
-    // deleteVilla: (state, action) => {
-    //   state.villaInfo = state.villaInfo.filter((villa) => villa.id !== action.payload);
-
-    // },
-    // updateVilla: (state, action) => {
-    //   state.villaInfo = state.villaInfo.map((elem) =>
-    //     elem.id === action.payload.id ? action.payload : elem
-    //   );
-    // },
+    clearSingleVilla: (state) => {
+      state.singleVilla = null;
+    },
   },
   extraReducers: (builder) => {
     builder
@@ -108,3 +99,4 @@ export const singleVillaById = (state) => state.villaInfo.singleVilla;
 export default villaInfoSlice.reducer;
 
 
+export const { clearSingleVilla } = villaInfoSlice.actions;

@@ -49,7 +49,7 @@ function Card() {
                   <p>{data.bhk} Bedrooms | {data.baths} Baths | {data.capacity} Guests</p>
                 </div>
                 <div className="villa-price-main">
-                  <p className="price">₹{data.price}</p>
+                  <p className="price">₹{data.weekendprice}</p>
                   <p className="deleted-price">₹{data.del_price}/-per night</p>
                 </div>
                 <div className="taxes">

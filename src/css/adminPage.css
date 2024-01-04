@@ -107,7 +107,7 @@
     width: 100%; */
     border-radius: 6px;
     padding: 30px;
-    margin: 20px 30px;
+    /* margin: 20px 30px; */
     background-color: #fff;
     box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
 }
@@ -413,6 +413,9 @@ form .buttons button,
     display: flex;
     gap: 50px;
 }
+.admin-details label {
+    cursor: pointer;
+}
 
 .admin-nav-logo img {
     width: 42px;
@@ -438,6 +441,11 @@ form .buttons button,
 
 /* ADMIN NAV MODAL CSS  */
 .admin-modal {
+    display: none;
+    /* position: relative; */
+}
+
+.admin-modal-nav {
     position: absolute;
     background: white;
     padding: 19px 40px;
@@ -445,12 +453,13 @@ form .buttons button,
     top: 61px;
     right: 26px;
     box-shadow: rgb(117 117 117 / 10%) 0px 0px 14px 3px;
-    display: none;
+    /* display: none; */
 }
 
 .admin-modal ul li {
     list-style: none;
     margin-bottom: 15px;
+    cursor: pointer;
 }
 
 .admin-nav-arrow {
@@ -459,8 +468,8 @@ form .buttons button,
     background: #dbdbdb;
     position: absolute;
     box-shadow: rgb(117 117 117 / 10%) 0px 0px 14px 3px;
-    top: -5px;
-    left: 158px;
+    top: -4px;
+    left: 159px;
     transform: rotate(45deg);
     z-index: -1;
 }

@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import Card from '../components/compMainPage/Card'
 import '../css/mainPage.css'
 import NavBar from '../components/common/NavBar';
@@ -6,11 +6,18 @@ import Faqs from '../components/common/Faqs'
 import Footer from '../components/common/Footer'
 import { useState } from 'react'
 import BottomNav from '../components/common/BottomNav'
+import { loggedIn } from '../features/users/userSlice';
+import { useDispatch } from 'react-redux';
 
 function HomePage() {
 
 
   const [navbar, setNavbar] = useState();
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(loggedIn()); // Update Redux state
+  }, []);
 
   function changebackground(e) {
     e.preventDefault();

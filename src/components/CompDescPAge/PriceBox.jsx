@@ -21,21 +21,21 @@ function PriceBox() {
     
     const villaData = useSelector(singleVillaById)
 
-    const { price, price_capacity, weekday_price, del_price, looking } = villaData
+    const {  aboveguests, weekdayprice, weekendprice, } = villaData
 
     return (
 
         <div className="main-left">
             <div className="heading-one">
-                <p className="del-price">₹{del_price}</p>
-                <p className="main-price">₹{price}<span className="after-price">/per-night
+                <p className="del-price">₹del price</p>
+                <p className="main-price">₹{weekendprice}<span className="after-price">/per-night
                     (Week-END/Holiday)</span>
                 </p>
-                <p className="main-price-wkday">₹{weekday_price}<span className="after-price">/-per-night
+                <p className="main-price-wkday">₹{weekdayprice}<span className="after-price">/-per-night
                     (Week-DAY)</span>
                 </p>
-                <p className="above-price-main">Price given above is for upto <span className="above-guests"> {price_capacity} Guests</span></p>
-                <p>Above {price_capacity} Guests : </p>
+                <p className="above-price-main">Price given above is for upto <span className="above-guests"> {aboveguests} Guests</span></p>
+                <p>Above {aboveguests} Guests : </p>
                 <div className="extra-guests-charge">
                     <p className="extra-guest-prc">₹1,000 <span className="after-price">per-person(weekend/holiday)</span> </p>
                     <p className="extra-guest-prc">₹500 <span className="after-price">per-person(weekdays)</span>
@@ -45,7 +45,7 @@ function PriceBox() {
             <div className="looking">
                 <div className="look-image"><img src="../Images/Icons/binocular-nobg.png" alt="" /></div>
                 <div>
-                    <p className="look-text">{looking} others are looking at this property.</p>
+                    <p className="look-text">12 others are looking at this property.</p>
                 </div>
             </div>
             <div className="book-now">

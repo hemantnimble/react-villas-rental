@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 // import villaData from '../../../data';
-import { useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import { useEffect, } from 'react';
 import { useSelector, useDispatch } from 'react-redux'
 import { fetchVillaById, singleVillaById } from '../../features/villaInfo/villaInfoSlice';
@@ -21,7 +21,7 @@ function DescTop() {
 
     const { villaId } = useParams();
     // const villa = villaData.find((villa) => villa._id === villaId);
-    const { images, thumbnail, mainImg2, mainImg3, driveLink, luxuryBadge } = villaData
+    const { images, drivelink } = villaData
     const baseURL = 'http://localhost:3000/';
 
     const [modal, setModal] = useState(false);
@@ -38,7 +38,7 @@ function DescTop() {
     // console.log(images);         // Log the entire array
     // console.log(images[1]);      // Log the element at index 1
     // console.log(images[2]);      // Log the element at index 2
-    
+
     const Modal = () => {
         return (
             <div className="popup-box">
@@ -54,8 +54,8 @@ function DescTop() {
                                 })
                             }
                             <div>
-                                <a href={driveLink}>View
-                                    More</a>
+                                <Link to={drivelink}>View
+                                    More</Link>
                             </div>
                         </div>
                     </div>
@@ -72,11 +72,12 @@ function DescTop() {
             <div className="images-main">
                 <div className="image-1"><img src={`${baseURL}${images[0]}`} alt="img" />
                 </div>
-                <div className="image-2">{luxuryBadge &&
-                    <div className="luxury-badge">
-                        <img src={luxuryBadge} alt="" id="luxury-badge" />
-                    </div>
-                }
+                <div className="image-2">
+                    {/* {luxuryBadge &&
+                        <div className="luxury-badge">
+                            <img src={luxuryBadge} alt="" id="luxury-badge" />
+                        </div>
+                    } */}
                     <img src={`${baseURL}${images[2]}`} alt="img" />
                     <button onClick={handlePopUp} className="btn" type="button">View Photos</button>
                 </div>

@@ -12,6 +12,7 @@ import { useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import BottomNav from '../components/common/BottomNav'
 import { fetchVillaById, singleVillaById } from '../features/villaInfo/villaInfoSlice';
+import { clearSingleVilla } from '../features/villaInfo/villaInfoSlice';
 
 
 function DescriptionPage() {
@@ -22,6 +23,7 @@ function DescriptionPage() {
     useEffect(() => {
         window.scrollTo(0, 0)
         if (!villaData || villaData._id !== villaId) {
+            dispatch(clearSingleVilla());
             dispatch(fetchVillaById(villaId));
         }
     }
@@ -38,7 +40,7 @@ function DescriptionPage() {
     }
 
     // const villa = villaData.find((villa) => villa._id === villaId);
-    const { name, bhk, baths, halls, capacity, about, location, amenities } = villaData
+    const { name, bhk, baths, halls, capacity, description, location, amenities, checkin, checkout, mapslink } = villaData
     const { wifi, tv } = amenities;
 
     // console.log(wifi,tv)
@@ -55,14 +57,14 @@ function DescriptionPage() {
 
                             </div>
                             <div className="location-name">
-                                <p> Malavli, Lonavala </p>
+                                <p> {location} </p>
                             </div>
                             <div className="timing">
                                 <div className="timing-icons"><i className="fa-solid fa-clock"></i>
-                                    <p> Check IN Time : 1 PM.</p>
+                                    <p> Check IN Time : {checkin} PM.</p>
                                 </div>
                                 <div className="timing-icons"><i className="fa-solid fa-clock"></i>
-                                    <p>Check OUT Time : 11 AM.</p>
+                                    <p>Check OUT Time : {checkout} AM.</p>
                                 </div>
                                 <div className="extend-time">
                                     <p>
@@ -125,7 +127,7 @@ function DescriptionPage() {
                                     {/* ....................about villa section............  */}
                                     <div className="abot-main" id="about">
                                         <p className="about-heading">About</p>
-                                        <p className="about-text">{about}</p>
+                                        <p className="about-text">{description}</p>
                                     </div>
                                     {/* ............................... AMINITIES........................  */}
                                     <div className="aminities">
@@ -182,7 +184,7 @@ function DescriptionPage() {
                                         <div className="location-heading" id="location">
                                             <p> Location</p>
                                         </div>
-                                        <iframe className="loc-window" src={location} width={600} height={200} style={{ border: 0 }} allowFullScreen loading="lazy" referrerPolicy="no-referrer-when-downgrade" />
+                                        <iframe className="loc-window" src={mapslink} width={600} height={200} style={{ border: 0 }} allowFullScreen loading="lazy" referrerPolicy="no-referrer-when-downgrade" />
                                     </div>
                                     <FoodMenu></FoodMenu>
                                     <RulesPolicies></RulesPolicies>
