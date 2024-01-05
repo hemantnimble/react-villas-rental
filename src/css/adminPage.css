@@ -101,6 +101,13 @@
 
 /* ADD VILLA FORM CSS  */
 
+.checkbox-wrapper-16 {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    margin: 10px 0px;
+}
+
 .container {
     position: relative;
     /* max-width: 900px;
@@ -271,9 +278,7 @@ form .buttons button,
 }
 
 .checkbox-wrapper-16 .checkbox-input:checked+.checkbox-tile {
-    border-color: #2260ff;
     box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
-    color: #2260ff;
 }
 
 .checkbox-wrapper-16 .checkbox-input:checked+.checkbox-tile:before {
@@ -281,16 +286,6 @@ form .buttons button,
     opacity: 1;
     background-color: #2260ff;
     border-color: #2260ff;
-}
-
-.checkbox-wrapper-16 .checkbox-input:checked+.checkbox-tile .checkbox-icon,
-.checkbox-wrapper-16 .checkbox-input:checked+.checkbox-tile .checkbox-label {
-    color: #2260ff;
-}
-
-.checkbox-wrapper-16 .checkbox-input:focus+.checkbox-tile {
-    border-color: #2260ff;
-    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1), 0 0 0 4px #b5c9fc;
 }
 
 .checkbox-wrapper-16 .checkbox-input:focus+.checkbox-tile:before {
@@ -303,8 +298,8 @@ form .buttons button,
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    width: 7rem;
-    min-height: 7rem;
+    width: 5rem;
+    min-height: 5rem;
     border-radius: 0.5rem;
     border: 2px solid #b5bfd9;
     background-color: #fff;
@@ -318,8 +313,8 @@ form .buttons button,
     content: "";
     position: absolute;
     display: block;
-    width: 1.25rem;
-    height: 1.25rem;
+    width: 14px;
+    height: 14px;
     border: 2px solid #b5bfd9;
     background-color: #fff;
     border-radius: 50%;
@@ -349,8 +344,8 @@ form .buttons button,
 }
 
 .checkbox-wrapper-16 .checkbox-icon svg {
-    width: 3rem;
-    height: 3rem;
+    width: 2rem;
+    height: 2rem;
 }
 
 .checkbox-wrapper-16 .checkbox-label {
@@ -363,6 +358,44 @@ form .buttons button,
     font-size: 13px;
     color: red;
     font-weight: 400;
+}
+
+.custum-file-upload {
+    margin: 20px 0px;
+    height: 100px;
+    width: 105px;
+    cursor: pointer;
+    border: 2px dashed #cacaca;
+    border-radius: 10px;
+}
+
+.custum-file-upload .icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.custum-file-upload .icon svg {
+    margin-top: 10px;
+    height: 52px;
+    fill: rgba(75, 85, 99, 1);
+}
+
+.custum-file-upload .text {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.custum-file-upload .text span {
+    margin-top: 9px;
+    font-weight: 400;
+    color: rgba(75, 85, 99, 1);
+    font-size: 13px;
+}
+
+.custum-file-upload input {
+    display: none;
 }
 
 @media (max-width: 750px) {
@@ -413,6 +446,7 @@ form .buttons button,
     display: flex;
     gap: 50px;
 }
+
 .admin-details label {
     cursor: pointer;
 }
@@ -435,6 +469,10 @@ form .buttons button,
     }
 
     .addvilla {
+        display: none;
+    }
+
+    .logoutbtn {
         display: none;
     }
 }
@@ -489,5 +527,44 @@ form .buttons button,
 .image-preview-container img {
     border-radius: 10px;
     width: 10rem;
-    margin: 0px 9px 10px 0px;
+}
+
+.image-preview-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+
+.img-label input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+}
+
+.img-label {
+    display: block;
+    position: relative;
+    cursor: pointer;
+    user-select: none;
+}
+
+.img-label svg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 30px;
+    width: 30px;
+    transition: all 0.3s;
+    fill: #666;
+}
+
+.img-label svg:hover {
+    transform: scale(1.1);
+}
+
+.img-label input:checked~svg {
+    fill: #ffeb49;
 }

@@ -45,9 +45,6 @@ function Login() {
                     {/* <img src="Images/thumbnails/about.jpg" alt="" /> */}
                 </div>
                 <div className="form signup">
-                    {/* {success && (<p style={{ color: 'green' }}>{success}</p>)} */}
-                    {/* {error.type && (<p style={{ color: 'red' }}>Error: {error.message}</p>)} */}
-
                     <div className="form-content">
                         <header>LogIn</header>
                         <form noValidate onSubmit={handleSubmit(onSubmit)}>

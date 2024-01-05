@@ -497,6 +497,13 @@ nav input {
     padding-right: 3rem;
 }
 
+.info-icons-sec svg {
+    width: 50px;
+    height: 48px;
+    padding: 9px 0px;
+    border-radius: 5px;
+}
+
 .info-icons-sec i {
     font-size: 1.1rem;
     padding: 14px 13px;
@@ -1996,19 +2003,20 @@ footer .bottom-details .bottom_text {
 }
 
 /* ?? Loader */
-.loader-desc{
+.loader-desc {
     position: absolute;
     top: 50%;
     left: 50%;
-    transform: translate(-50%,-50%);
+    transform: translate(-50%, -50%);
 }
+
 .loader-desc svg {
     width: 3.25em;
     transform-origin: center;
     animation: rotate4 2s linear infinite;
 }
 
-.loader-desc circle{
+.loader-desc circle {
     fill: none;
     stroke: hsl(214, 97%, 59%);
     stroke-width: 2;

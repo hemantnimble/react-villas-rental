@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { updateVilla, fetchAsync } from '../../features/villaInfo/villaInfoSlice'
 import { Link, useParams } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
+import { useForm } from 'react-hook-form';
 
 function EditVilla() {
 
@@ -14,6 +15,12 @@ function EditVilla() {
 
     const navigate = useNavigate();
 
+    const {
+        register,
+        handleSubmit,
+        watch,
+        formState: { errors },
+    } = useForm()
 
     useEffect(() => {
         if (villaId) {

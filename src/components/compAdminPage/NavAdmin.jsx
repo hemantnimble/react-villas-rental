@@ -49,7 +49,7 @@ function NavAdmin() {
                     <label className="admin-nav-logo"><Link to='/'><img src="/Images/Logo/logoloc.png" alt="logo" />Villas Rental</Link></label>
                     <label className="dashboard"><Link to='/admin'><i className="fa-solid fa-grip"></i>Dashboard</Link></label>
                     <label className="addvilla"><Link to='/admin/add'><i className="fa-solid fa-plus" />Add new Villa</Link></label>
-                    <label onClick={handleLogOut}><i className="fa-solid fa-arrow-right-from-bracket"></i>Logout</label>
+                    <label className='logoutbtn' onClick={handleLogOut}><i className="fa-solid fa-arrow-right-from-bracket"></i>Logout</label>
                 </div>
                 <div className="admin-img">
                     <img onClick={handleModal} src="/Images/thumbnails/admin2.png" alt="admin" />
