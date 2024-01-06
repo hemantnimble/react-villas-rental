@@ -5,9 +5,12 @@ import { useForm } from "react-hook-form";
 import { useEffect } from 'react';
 import NavAdmin from './NavAdmin';
 import { useNavigate } from 'react-router-dom';
+import toast from 'react-hot-toast';
 
 
 function AddVilla() {
+    const status = useSelector(state => state.villaInfo.status);
+
     useEffect(() => {
         window.scrollTo(0, 0);
     }, []);
@@ -98,6 +101,13 @@ function AddVilla() {
             navigate('/admin')
         }
     }
+    useEffect(() => {
+        if (status === 'addnewsuccess') {
+            toast.success('Villa added successfully');
+        } else if (status === 'addnewrejected') {
+            toast.error('Error adding villa');
+        }
+    }, [status]);;
 
     return (
         <>

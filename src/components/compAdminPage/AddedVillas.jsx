@@ -3,17 +3,22 @@ import { useDispatch, useSelector } from 'react-redux'
 import { useEffect, useState } from 'react'
 import { deleteVilla, fetchAsync } from '../../features/villaInfo/villaInfoSlice'
 import { Link, useParams } from 'react-router-dom'
+import toast from 'react-hot-toast';
 
 function AddedVillas() {
     const dispatch = useDispatch();
     const villaData = useSelector(state => state.villaInfo.villaInfo);
+    const status = useSelector(state => state.villaInfo.status);
+
+    // Ensure villas is an array
+    const villas = Array.isArray(villaData) ? villaData : [];
     const baseURL = 'http://localhost:3000/';
 
     const { id } = useParams()
 
 
     useEffect(() => {
-        if (!villaData.length) {
+        if (!villas.length) {
             dispatch(fetchAsync());
         }
     }, [dispatch]);
@@ -28,56 +33,22 @@ function AddedVillas() {
     }
 
     function handleEdit(id) {
-        setEdit(villaData.find(data => data._id === id));
+        setEdit(villas.find(data => data._id === id));
     }
+
+    useEffect(() => {
+        if (status === 'deletesuccess') {
+            toast.success('Villa deleted successfully');
+        } else if (status === 'deleterejected') {
+            toast.error('Error deleting villa');
+        }
+    }, [status]);;
     return (
         <>
-            <p>Existing Villa Count: {villaData.length}</p>
-            {/* <div className="cardholder">
-                {
-                    villaData.map((data) => {
-                        const firstImage = data.images?.length > 0 ? data.images[0] : null;
-
-                        return <div key={data._id} className="card">
-                            <Link to={`/${data._id}`}>
-                                <div className="card-image">
-                                    <div className="best-rated">
-                                        {data.bestbadge &&
-                                            <img src={data.bestbadge} alt="" />}
-                                    </div>
-                                    {data.luxuryBadge &&
-                                        <div className="luxury-badge">
-                                            <img src={data.luxuryBadge} alt="" />
-                                        </div>
-                                    }
-                                    <img src={`${baseURL}${firstImage}`} alt="" />
-                                </div>
-                                <div className="mar">
-                                    <div className="villa-name-main">
-                                        <p className="villa-name"> {data.name}</p>
-                                    </div>
-                                    <div className="discription">
-                                        <p>{data.bhk}</p>
-                                    </div>
-                                    <div className="villa-price-main">
-                                        <p className="price">Weekends : ₹{data.price}</p>
-                                        <p className="weekday-price">Weekdays : ₹{data.price}</p>
-                                    </div>
-                                </div>
-                            </Link>
-                            <div className="admin-card-buttons" style={{ margin: "0px 25px" }}>
-                                <button style={{ marginRight: "25px" }} onClick={() => handleEdit(data._id)} >
-                                    <Link to={`/edit/${data._id}`}>Edit Villa </Link>
-                                </button>
-                                <button onClick={() => handleDelete(data._id)}>Delete Villa</button>
-                            </div>
-                        </div>
-                    })
-                }
-            </div> */}
+            <p>Existing Villa Count: {villas.length}</p>
             <div className="admin-cardholder">
                 {
-                    villaData.map((data) => {
+                    villas.map((data) => {
                         const firstImage = data.images?.length > 0 ? data.images[0] : null;
 
                         return <div key={data._id} className="admin-card">
@@ -97,24 +68,6 @@ function AddedVillas() {
                     })
                 }
             </div>
-
-
-            {/* <div className="cardholder">
-                <div className="admin-card">
-                    <div className="admin-card-image">
-                        <img src='Images/thumbnails/heramb.jpg' alt="Image" />
-                    </div>
-                    <div className="admin-card-details">
-                        <h2>Heramb Villa</h2>
-                        <p>2 BHK</p>
-                        <div className="admin-card-buttons">
-                            <button >Edit</button>
-                            <button >Delete</button>
-                        </div>
-                    </div>
-                </div>
-
-            </div> */}
         </>
     )
 }

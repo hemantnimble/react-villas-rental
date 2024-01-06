@@ -26,12 +26,52 @@ export const villaInfoSlice = createSlice({
         state.status = 'idle';
         state.villaInfo = action.payload;
       })
+      .addCase(fetchAsync.rejected, (state) => {
+        state.status = 'rejected';
+      })
+      //fetch by id
       .addCase(fetchVillaById.pending, (state) => {
         state.status = 'loading';
       })
       .addCase(fetchVillaById.fulfilled, (state, action) => {
         state.status = 'idle';
         state.singleVilla = action.payload;
+      })
+      .addCase(fetchVillaById.rejected, (state) => {
+        state.status = 'rejected';
+      })
+      //ADD NEW VILLA
+      .addCase(addNewVilla.pending, (state) => {
+        state.status = 'addnewloading';
+      })
+      .addCase(addNewVilla.fulfilled, (state, action) => {
+        state.status = 'addnewsuccess';
+        state.villaInfo = action.payload;
+      })
+      .addCase(addNewVilla.rejected, (state) => {
+        state.status = 'addnewrejected';
+      })
+      //DELETE VILLA
+      .addCase(deleteVilla.pending, (state) => {
+        state.status = 'deleteloading';
+      })
+      .addCase(deleteVilla.fulfilled, (state, action) => {
+        state.status = 'deletesuccess';
+        state.villaInfo = action.payload;
+      })
+      .addCase(deleteVilla.rejected, (state) => {
+        state.status = 'deleterejected';
+      })
+      //UPDATE VILLA
+      .addCase(updateVilla.pending, (state) => {
+        state.status = 'updateloading';
+      })
+      .addCase(updateVilla.fulfilled, (state, action) => {
+        state.status = 'updatesuccess';
+        state.villaInfo = action.payload;
+      })
+      .addCase(updateVilla.rejected, (state) => {
+        state.status = 'updaterejected';
       })
   },
 });
@@ -83,9 +123,9 @@ export const deleteVilla = createAsyncThunk('villaInfo/deleteVilla', async (id) 
 
 // Updating a villa 
 
-export const updateVilla = createAsyncThunk('villaInfo/updateVilla', async ({ id, updatedVilla }) => {
+export const updateVilla = createAsyncThunk('villaInfo/updateVilla', async ({ id, formdata }) => {
   try {
-    const response = await axios.put(`http://localhost:3000/villas/updatevilla/${id}`, updatedVilla);
+    const response = await axios.put(`http://localhost:3000/villas/updatevilla/${id}`, formdata);
     return response.data;
   } catch (error) {
     console.error('Error editing villa:', error);
