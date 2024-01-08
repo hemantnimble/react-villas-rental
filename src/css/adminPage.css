@@ -551,7 +551,7 @@ form .buttons button,
     user-select: none;
 }
 
-.img-label svg {
+.star-svg {
     position: absolute;
     top: 0;
     left: 0;
@@ -559,6 +559,34 @@ form .buttons button,
     width: 30px;
     transition: all 0.3s;
     fill: #666;
+}
+
+.delete-svg {
+    backdrop-filter: blur(4px);
+    border-radius: 5px;
+    position: absolute;
+    top: 4px;
+    right: 4px;
+    height: 28px;
+    width: 30px;
+    transition: all 0.3s;
+    fill: #fff;
+    background: #69696982;
+    padding: 3px;
+}
+
+.setMain-svg {
+    backdrop-filter: blur(4px);
+    border-radius: 5px;
+    position: absolute;
+    top: 4px;
+    left: 4px;
+    height: 26px;
+    width: 30px;
+    transition: all 0.3s;
+    fill: #fff;
+    background: #69696982;
+    padding: 3px;
 }
 
 .img-label svg:hover {

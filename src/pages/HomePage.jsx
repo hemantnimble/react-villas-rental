@@ -93,7 +93,6 @@ function HomePage() {
         </div>
       </div>
       <div className="ourvillasheading" id="ourvillas">
-        {/* <!-- <img src="../Images/Icons/arrow.png" style="width: 280px; margin-left: 72px;" alt=""> --> */}
         <p>-Explore Our collection-</p>
 
       </div>

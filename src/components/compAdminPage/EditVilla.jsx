@@ -79,6 +79,7 @@ function EditVilla() {
         setValue('matress', selectedVilla?.amenities?.matress || false);
         setValue('projector', selectedVilla?.amenities?.projector || false);
         setValue('oven', selectedVilla?.amenities?.oven || false);
+        setValue('pets', selectedVilla?.amenities?.pets || false);
     }, [setValue, selectedVilla]);
 
     const handleCheckboxChange = (index) => {
@@ -98,6 +99,19 @@ function EditVilla() {
             reader.readAsDataURL(e.target.files[i]);
         }
     }
+
+    const handleSetMainImage = (index) => {
+        const updatedImages = [...selectedVilla.images];
+        const selectedImage = updatedImages.splice(index, 1)[0];
+        updatedImages.unshift(selectedImage);
+        setSelectedVilla({ ...selectedVilla, images: updatedImages });
+    };
+
+    const handleDeleteImage = (index) => {
+        const updatedImages = [...selectedVilla.images];
+        updatedImages.splice(index, 1);
+        setSelectedVilla({ ...selectedVilla, images: updatedImages });
+    };
 
     async function OnSubmit(values) {
         if (values == '') {
@@ -123,7 +137,7 @@ function EditVilla() {
             formdata.append('mapslink', values.mapslink);
 
             // Append amenities
-            const amenityNames = ['wifi', 'tv', 'parking', 'pool', 'bathtub', 'kitchen', 'ac', 'geyser', 'waterfilter', 'lawn', 'bbq', 'speakers', 'inverter', 'bonfire', 'mtview', 'gazebo', 'games', 'fridge', 'terrace', 'barcounter', 'matress', 'projector', 'oven'];
+            const amenityNames = ['wifi', 'tv', 'parking', 'pool', 'bathtub', 'kitchen', 'ac', 'geyser', 'waterfilter', 'lawn', 'bbq', 'speakers', 'inverter', 'bonfire', 'mtview', 'gazebo', 'games', 'fridge', 'terrace', 'barcounter', 'matress', 'projector', 'oven','pets'];
             amenityNames.forEach((amenity) => {
                 formdata.append(`amenities.${amenity}`, values[amenity] === true ? 'true' : 'false');
             });
@@ -151,8 +165,6 @@ function EditVilla() {
 
             // Append the rest of the images
             if (imagePreviews.length > 0) {
-
-
                 for (let i = 0; i < images.length; i++) {
                     formdata.append('images', images[i]);
                 }
@@ -479,6 +491,17 @@ function EditVilla() {
                                     <span className="checkbox-label">Oven</span>
                                 </span>
                             </label>
+                            <label className="checkbox-wrapper">
+                                <input {...register('pets')} type="checkbox" className="checkbox-input" />
+                                <span className="checkbox-tile">
+                                    <span className="checkbox-icon">
+                                        <svg xmlns="http://www.w3.org/2000/svg" fill="#555555" id="Layer_1" data-name="Layer 1" viewBox="0 0 24 24">
+                                            <path d="m22.118,5c-.51,0-.978-.3-1.19-.764-.345-.751-1.157-1.236-2.07-1.236h-.858V.941c0-.3-.144-.588-.386-.77-.236-.177-.531-.232-.81-.153-1.046.302-1.805,1.346-1.805,2.481v1.756l-.994,2.754c-.214.593-.781.991-1.411.991l-5.101.003c-1.707,0-3.234.784-4.243,2.008-.393-.233-2.255-1.498-2.255-4.512,0-.276-.224-.5-.5-.5S-.003,5.224-.003,5.5C-.003,8.91,2.041,10.44,2.688,10.839c-.439.79-.69,1.699-.69,2.665l.002,8.002c0,1.377,1.122,2.498,2.499,2.498s2.499-1.121,2.499-2.499v-3.506l7.003-.003v3.505c0,1.378,1.121,2.499,2.505,2.499s2.499-1.121,2.499-2.499l-.008-3.411,1.23-6.681c.044-.237.25-.409.492-.409,1.81,0,3.283-1.473,3.283-3.283v-.717c0-1.467-1.125-2-1.882-2Zm.882,2.717c0,1.259-1.024,2.283-2.283,2.283-.724,0-1.344.517-1.475,1.229l-1.239,6.771v3.501c0,.826-.672,1.499-1.505,1.499-.826,0-1.499-.672-1.499-1.499v-4.006c0-.133-.053-.26-.146-.354s-.221-.146-.354-.146h0l-8.003.004c-.276,0-.5.224-.5.5v4.006c0,.826-.672,1.499-1.499,1.499s-1.498-.672-1.499-1.498l-.002-8.002c0-2.48,2.017-4.5,4.498-4.501l5.101-.003c1.049,0,1.994-.664,2.351-1.651l1.023-2.836c.02-.055.03-.112.03-.17v-1.843c0-.689.465-1.342,1-1.559v2.559c0,.276.224.5.5.5h1.358c.515,0,.981.262,1.161.652.375.819,1.199,1.348,2.099,1.348.147,0,.882.048.882,1v.717Z" />
+                                        </svg>
+                                    </span>
+                                    <span className="checkbox-label">Pets</span>
+                                </span>
+                            </label>
                         </div>
 
                         {/* IMAGE UPLOAD FORM  */}
@@ -505,7 +528,7 @@ function EditVilla() {
                                         <img src={preview} alt={`Preview ${index}`} />
                                         <input className='img-input' type="checkbox" value="checked" checked={index === checkedIndex}
                                             onChange={() => handleCheckboxChange(index)} />
-                                        <svg height="24px" id="Layer_1" version="1.2" viewBox="0 0 24 24" width="24px" xmlSpace="preserve" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink"><g><g><path d="M9.362,9.158c0,0-3.16,0.35-5.268,0.584c-0.19,0.023-0.358,0.15-0.421,0.343s0,0.394,0.14,0.521    c1.566,1.429,3.919,3.569,3.919,3.569c-0.002,0-0.646,3.113-1.074,5.19c-0.036,0.188,0.032,0.387,0.196,0.506    c0.163,0.119,0.373,0.121,0.538,0.028c1.844-1.048,4.606-2.624,4.606-2.624s2.763,1.576,4.604,2.625    c0.168,0.092,0.378,0.09,0.541-0.029c0.164-0.119,0.232-0.318,0.195-0.505c-0.428-2.078-1.071-5.191-1.071-5.191    s2.353-2.14,3.919-3.566c0.14-0.131,0.202-0.332,0.14-0.524s-0.23-0.319-0.42-0.341c-2.108-0.236-5.269-0.586-5.269-0.586    s-1.31-2.898-2.183-4.83c-0.082-0.173-0.254-0.294-0.456-0.294s-0.375,0.122-0.453,0.294C10.671,6.26,9.362,9.158,9.362,9.158z" /></g></g></svg>
+                                        <svg className='star-svg' height="24px" id="Layer_1" version="1.2" viewBox="0 0 24 24" width="24px" xmlSpace="preserve" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink"><g><g><path d="M9.362,9.158c0,0-3.16,0.35-5.268,0.584c-0.19,0.023-0.358,0.15-0.421,0.343s0,0.394,0.14,0.521    c1.566,1.429,3.919,3.569,3.919,3.569c-0.002,0-0.646,3.113-1.074,5.19c-0.036,0.188,0.032,0.387,0.196,0.506    c0.163,0.119,0.373,0.121,0.538,0.028c1.844-1.048,4.606-2.624,4.606-2.624s2.763,1.576,4.604,2.625    c0.168,0.092,0.378,0.09,0.541-0.029c0.164-0.119,0.232-0.318,0.195-0.505c-0.428-2.078-1.071-5.191-1.071-5.191    s2.353-2.14,3.919-3.566c0.14-0.131,0.202-0.332,0.14-0.524s-0.23-0.319-0.42-0.341c-2.108-0.236-5.269-0.586-5.269-0.586    s-1.31-2.898-2.183-4.83c-0.082-0.173-0.254-0.294-0.456-0.294s-0.375,0.122-0.453,0.294C10.671,6.26,9.362,9.158,9.362,9.158z" /></g></g></svg>
                                     </label>
                                 </div>
                             ))}
@@ -520,23 +543,14 @@ function EditVilla() {
                             <div key={index} className="img-preview">
                                 <label className="img-label">
                                     <img src={`${baseURL}${image}`} alt={`Preview ${index}`} />
-                                    <input className='img-input' type="checkbox" value="checked" checked={index === checkedIndex}
-                                        onChange={() => handleCheckboxChange(index)} />
-                                    <svg height="24px" id="Layer_1" version="1.2" viewBox="0 0 24 24" width="24px" xmlSpace="preserve" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink"><g><g><path d="M9.362,9.158c0,0-3.16,0.35-5.268,0.584c-0.19,0.023-0.358,0.15-0.421,0.343s0,0.394,0.14,0.521    c1.566,1.429,3.919,3.569,3.919,3.569c-0.002,0-0.646,3.113-1.074,5.19c-0.036,0.188,0.032,0.387,0.196,0.506    c0.163,0.119,0.373,0.121,0.538,0.028c1.844-1.048,4.606-2.624,4.606-2.624s2.763,1.576,4.604,2.625    c0.168,0.092,0.378,0.09,0.541-0.029c0.164-0.119,0.232-0.318,0.195-0.505c-0.428-2.078-1.071-5.191-1.071-5.191    s2.353-2.14,3.919-3.566c0.14-0.131,0.202-0.332,0.14-0.524s-0.23-0.319-0.42-0.341c-2.108-0.236-5.269-0.586-5.269-0.586    s-1.31-2.898-2.183-4.83c-0.082-0.173-0.254-0.294-0.456-0.294s-0.375,0.122-0.453,0.294C10.671,6.26,9.362,9.158,9.362,9.158z" /></g></g></svg>
+                                    {index !== 0 ? <svg onClick={() => handleSetMainImage(index)} className='setMain-svg' xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width={512} height={512}><g id="_01_align_center" data-name="01 align center"><path d="M19.467,23.316,12,17.828,4.533,23.316,7.4,14.453-.063,9H9.151L12,.122,14.849,9h9.213L16.6,14.453ZM12,15.346l3.658,2.689-1.4-4.344L17.937,11H13.39L12,6.669,10.61,11H6.062l3.683,2.691-1.4,4.344Z" /></g></svg>
+                                        : <svg onClick={() => handleSetMainImage(index)} className='setMain-svg' xmlns="http://www.w3.org/2000/svg" id="Layer_1" data-name="Layer 1" viewBox="0 0 24 24" width={512} height={512}><path d="M19.467,23.316,12,17.828,4.533,23.316,7.4,14.453-.063,9H9.151L12,.122,14.849,9h9.213L16.6,14.453Z" /></svg>
+                                    }
+                                    <svg onClick={() => handleDeleteImage(index)} className='delete-svg' xmlns="http://www.w3.org/2000/svg" id="Outline" viewBox="0 0 24 24" width={512} height={512}><path d="M16,8a1,1,0,0,0-1.414,0L12,10.586,9.414,8A1,1,0,0,0,8,9.414L10.586,12,8,14.586A1,1,0,0,0,9.414,16L12,13.414,14.586,16A1,1,0,0,0,16,14.586L13.414,12,16,9.414A1,1,0,0,0,16,8Z" /><path d="M12,0A12,12,0,1,0,24,12,12.013,12.013,0,0,0,12,0Zm0,22A10,10,0,1,1,22,12,10.011,10.011,0,0,1,12,22Z" /></svg>
                                 </label>
                             </div>
                         ))}
                     </div>
-
-                    {/* Display selected image previews */}
-                    {/* <div className="input-field">
-                        <label>Selected Images</label>
-                        <div className="selected-images-container">
-                            {imagePreviews.map((preview, index) => (
-                                <img key={index} src={preview} alt={`Selected ${index + 1}`} className="selected-image-preview" />
-                            ))}
-                        </div>
-                    </div> */}
 
                     <button type='submit' className="nextBtn">
                         <span className="btnText">Update</span>

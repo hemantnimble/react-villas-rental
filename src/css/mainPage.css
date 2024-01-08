@@ -43,6 +43,7 @@ a {
     background: rgb(255, 255, 255);
     box-shadow: 0px 0px 6px #0000008a
 }
+
 .nav-aboutPage {
     position: fixed;
     z-index: 99;
@@ -189,20 +190,9 @@ a {
     margin-right: 8px;
 }
 
-.nav-links li a::after {
-    content: '';
-    background-color: rgb(11, 117, 141);
-    width: 0;
-    height: 3px;
-    position: absolute;
-    top: 55px;
-    left: 15px;
-    transition: 0.3s;
-}
 
-.nav-links li a:hover::after {
-    width: 80%;
-    color: #12406d;
+.nav-links li a:hover {
+    color: #dddddd;
 }
 
 .nav-links .mobile-item {
@@ -777,6 +767,7 @@ nav input {
     font-size: 2.5rem;
     font-weight: 100;
 }
+
 /* .faqs::after {
   content: '';
   width: 100%;
